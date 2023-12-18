@@ -24,7 +24,7 @@ export default function Header() {
 
   return (
     <div className="bg-banner bg-center bg-cover bg-white-50 bg-opacity-50">
-      <div className="bg-slate-800 bg-opacity-80">
+      <div className="bg-slate-800 bg-opacity-80 p-3">
         <img src={HeaderLogo} alt="Backyard Bowls Logo" className="drop-shadow-dark stroke-black p-3 mx-auto" style={{width: "95%", marginBottom: "20px", maxWidth: "600px"}}/>
         <NavBarRegular currentUser={currentUser} handleLogoutClick={handleLogoutClick} />
         <NavBarCollapse currentUser={currentUser} handleLogoutClick={handleLogoutClick} />

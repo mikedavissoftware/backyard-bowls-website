@@ -6,7 +6,7 @@ import './App.css';
 import Header from './components/Header'
 import Menu from './components/pages/MenuPage'
 import LoginPage from './components/pages/LoginPage'
-import Home from './components/pages/Home'
+import Home from './components/pages/HomePage'
 import AccountPage from "./components/pages/AccountPage"
 import BowlPage from "./components/pages/BowlPage"
 import Footer from "./components/Footer"

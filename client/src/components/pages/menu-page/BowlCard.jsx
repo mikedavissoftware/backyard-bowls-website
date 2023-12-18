@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 import { GlobalContext } from "../../../App"
 
-import Placeholder from "../../assets/bowl-placeholder-2.png"
+import Placeholder from "../../../assets/bowl-placeholder-2.png"
 
 
 export default function BowlCard({ bowl }) {

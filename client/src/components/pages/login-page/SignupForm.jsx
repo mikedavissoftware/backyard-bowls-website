@@ -1,25 +1,15 @@
-import { useState, useEffect , useContext } from "react"
+import { useState, useEffect, useContext } from "react"
 
 import { GlobalContext } from "../../../App"
 
 
-export default function SignupForm({ items, username, setUsername, password, setPassword }) {
+export default function SignupForm({ items, formData, handleChange }) {
 
   const { currentUser, setCurrentUser, history, errors, setErrors } = useContext(GlobalContext)
 
   const redirect = () => {
     history.push('/me');
   }
-
-  const newForm = {
-    username: username,
-    password: password,
-    passwordConfirmation: '',
-    image: '',
-    favBowl: '',
-    diet: ''
-  }
-  const [formData, setFormData] = useState(newForm)
 
   const bowls = items.filter(item => {
     return item.category === "Bowl"
@@ -38,19 +28,12 @@ export default function SignupForm({ items, username, setUsername, password, set
     return <option value={diet}>{diet}</option>
   })
 
-  const handleChange = (e) => {
-    console.log(e.target)
-    const { name, value } = e.target
-    setFormData({ ...formData, [name]: value })
-    console.log(formData)
-  }
-
   function handleSubmit(e) {
     e.preventDefault();
     
     const formSubmit = {
-      username: username,
-      password: password,
+      username: formData.username,
+      password: formData.password,
       password_confirmation: formData.passwordConfirmation,
       image: formData.image,
       fav_bowl: formData.favBowl,
@@ -87,68 +70,97 @@ export default function SignupForm({ items, username, setUsername, password, set
 
   return (
     <div>
-      <h2>Create Your Account:</h2>
+      <h2 className="font-bold text-white text-2xl">Create Your Account:</h2>
 
       {showErrors}
 
       <form onSubmit={handleSubmit}>
-        <label><strong>Username: </strong></label>
-        <input 
-          type="text" 
-          name="username" 
-          placeholder="Enter username..." 
-          value={username} 
-          onChange={(e) => setUsername(e.target.value)}
-        />
+        
+        <div className="form-control max-w-2xl mx-auto">
+          <label className="label">
+            <span className="label-text mx-auto text-black dark:text-white">Username:</span>
+          </label>
+          <input
+            id="username"
+            name="username"
+            type="text"
+            placeholder="Type username here..."
+            value={formData.username}
+            onChange={handleChange}
+            className="input input-bordered w-full max-w-xs mx-auto text-white text-lg"
+          />
+        </div>
 
-        <br></br>
-        <label><strong>Password: </strong></label>
-        <input 
-          type="password" 
-          name="password" 
-          placeholder="Enter password..." 
-          value={password} 
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className="form-control max-w-2xl mx-auto">
+          <label className="label">
+            <span className="label-text mx-auto text-black dark:text-white">Password:</span>
+          </label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Type password here..."
+            value={formData.password}
+            onChange={handleChange}
+            className="input input-bordered w-full max-w-xs mx-auto text-white text-lg"
+          />
+        </div>
 
-        <br></br>
-        <label><strong>Confirm Password: </strong></label>
-        <input 
-          type="password" 
-          name="passwordConfirmation" 
-          placeholder="Confirm password..." 
-          value={formData.passwordConfirmation} 
-          onChange={handleChange} 
-        />
+        <div className="form-control max-w-2xl mx-auto">
+          <label className="label">
+            <span className="label-text mx-auto text-black dark:text-white">Confirm Password:</span>
+          </label>
+          <input
+            id="password-confirmation"
+            name="passwordConfirmation"
+            type="password"
+            placeholder="Confirm password..."
+            value={formData.passwordConfirmation}
+            onChange={handleChange}
+            className="input input-bordered w-full max-w-xs mx-auto text-white text-lg"
+          />
+        </div>
 
-        <br></br>
-        <label><strong>Image: </strong></label>
-        <input 
-          type="text" 
-          name="image" 
-          placeholder="Enter profile image url..." 
-          value={formData.image} 
-          onChange={handleChange} 
-        />
+        <div className="form-control max-w-2xl mx-auto">
+          <label className="label">
+            <span className="label-text mx-auto text-black dark:text-white">Profile Picture:</span>
+          </label>
+          <input
+            id="image"
+            name="image"
+            type="text"
+            placeholder="Enter profile picture URL.."
+            value={formData.image}
+            onChange={handleChange}
+            className="input input-bordered w-full max-w-xs mx-auto text-white text-lg"
+          />
+        </div>
 
-        <br></br>
-        <label><strong>Favorite Bowl: </strong></label>
-        <select name="favBowl" onChange={handleChange}>
-          <option value={"unspecified"} disabled selected>Select Your Favorite Bowl...</option>
-          {bowlOptions}
-        </select>
+        <div className="form-control max-w-2xl mx-auto">
+          <label className="label">
+            <span className="label-text mx-auto text-black dark:text-white">Your Favorite Bowl:</span>
+          </label>
+          <select className="select select-bordered w-full max-w-xs mx-auto" name="favBowl" onChange={handleChange}>
+            <option value={"unspecified"} disabled selected>Select Your Favorite Bowl...</option>
+            {bowlOptions}
+          </select>
+        </div>
 
-        <br></br>
-        <label><strong>Diet: </strong></label>
-        <select name="diet" onChange={handleChange}>
-          <option value={"unspecified"} disabled selected>Select Your Diet...</option>
-          {dietOptions}
-        </select>
+        <div className="form-control max-w-2xl mx-auto">
+          <label className="label">
+            <span className="label-text mx-auto text-black dark:text-white">Your Diet:</span>
+          </label>
+          <select className="select select-bordered w-full max-w-xs mx-auto" name="diet" onChange={handleChange}>
+            <option value={"unspecified"} disabled selected>Select Your Diet...</option>
+            {dietOptions}
+          </select>
+        </div>
 
-        <br></br>
-        <button className="ui button" type="submit">
-          Create Account
-        </button>
+        <div className="grid my-5 max-w-2xl mx-auto">
+          <div>
+            <button type="submit" className="py-2 px-4 rounded-md bg-accent text-white hover:bg-[#7f7] hover:text-black"><span className="drop-shadow-sm-dark">Create Account</span></button>
+          </div>
+        </div>
       </form>
     </div>
   )

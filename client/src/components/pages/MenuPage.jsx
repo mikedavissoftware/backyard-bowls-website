@@ -39,11 +39,11 @@ export default function MenuPage() {
   if (!items) return <h2>Loading...</h2>
 
   return (
-    <div className="menu-container">
-      <h1>🥗 BOWLS 🥗</h1>
+    <div className="menu-container my-1">
+      <h1 className="text-3xl">🥗 BOWLS 🥗</h1>
       <BowlCollection bowls={bowls} allLikes={allLikes} setAllLikes={setAllLikes} />
-      <hr width="50%"></hr>
-      <h1>🍠 SIDES & DRINKS 🍹</h1>
+      <hr className="w-1/2 mx-auto my-4"></hr>
+      <h1 className="text-3xl my-2">🍠 SIDES & DRINKS 🍹</h1>
       <SidesCollection sidesDrinks={sidesDrinks} />
     </div>
   )
