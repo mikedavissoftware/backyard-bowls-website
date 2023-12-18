@@ -72,8 +72,8 @@ export default function BowlCard({ bowl }) {
   }
 
   return (
-    <div className="card bg-base-100 shadow-xl image-full">
-      <figure className="p-10"><img src={Placeholder} className=""/></figure>
+    <div className="card bg-base-100 shadow-xl image-full m-2">
+      <figure className=""><img src={Placeholder} className=""/></figure>
       <div className="card-body">
         <h2 className="card-title justify-center font-bold">{name}</h2>
         <p>Our <strong>{name}</strong> has our classic <strong>{base}</strong> base with <strong>{protein}</strong> as its protein, and rounding out the ingredients with: <ul><strong>{vegComponents}</strong></ul> Last, but not least, this delicious bowl is finished with a dressing of <strong>{dressing}</strong>. Bon appétit!</p>
