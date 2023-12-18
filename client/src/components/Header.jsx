@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { NavLink } from "react-router-dom"
+
 import HeaderLogo from "../assets/images/wordmark-green.png"
 
 import NavBarRegular from "./NavBarRegular"

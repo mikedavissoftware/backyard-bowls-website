@@ -7,7 +7,7 @@ export default function NavBarRegular({ currentUser, handleLogoutClick }) {
 
 
   return (
-    <div className="invisible h-0 md:visible md:h-auto">
+    <div className="invisible h-0 md:visible md:h-auto py-4">
       <ul className="menu menu-horizontal bg-base-100 rounded-xl">
         <li><NavLink exact to="/">Home</NavLink></li>
         <li><NavLink to="/menu">Menu</NavLink></li>

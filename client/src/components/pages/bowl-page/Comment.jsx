@@ -2,7 +2,7 @@ import { useState, useContext } from "react"
 
 import CommentEditForm from "./CommentEditForm"
 
-import { GlobalContext } from "../App"
+import { GlobalContext } from "../../../App"
 
 
 export default function Comment({ comment, currentUserComment, setIsCurrentUserComment }) {

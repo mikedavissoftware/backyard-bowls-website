@@ -1,6 +1,6 @@
 import { useState, useEffect , useContext } from "react"
 
-import { GlobalContext } from "../App"
+import { GlobalContext } from "../../../App"
 
 
 export default function SignupForm({ items, username, setUsername, password, setPassword }) {

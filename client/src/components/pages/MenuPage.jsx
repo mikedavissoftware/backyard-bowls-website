@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react"
 
-import BowlCollection from "./BowlCollection"
-import SidesCollection from "./SidesCollection"
+import BowlCollection from "./menu-page/BowlCollection"
+import SidesCollection from "./menu-page/SidesCollection"
 
 
-export default function Menu() {
+export default function MenuPage() {
 
   const [allLikes, setAllLikes] = useState([])
   useEffect(() => {
