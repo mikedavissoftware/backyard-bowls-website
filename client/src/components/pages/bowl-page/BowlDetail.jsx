@@ -1,12 +1,12 @@
 import { useState, useContext } from "react"
 import { Link } from "react-router-dom"
 
-import { GlobalContext } from "../App"
+import { GlobalContext } from "../../../App"
 
-import Placeholder from "../assets/bowl-placeholder-2.png"
+import Placeholder from "../../../assets/bowl-placeholder-2.png"
 
 
-export default function BowlCard({ bowl }) {
+export default function BowlDetail({ bowl }) {
 
   const { currentUser, history, setErrors } = useContext(GlobalContext)
 
@@ -15,15 +15,16 @@ export default function BowlCard({ bowl }) {
   const isLikedByCurrentUser = (currentUser) ? (
     bowl.likes.map(((like) => {return like.user_id})).includes(currentUser.id)
   ) : (
-    false
+    null
   )
-  const [showLikeButton, setShowLikeButton] = useState(isLikedByCurrentUser)
+  const [showAsLiked, setShowAsLiked] = useState(Boolean(isLikedByCurrentUser))
 
   const [itemLikes, setItemLikes] = useState(bowl.likes)
-
-  const vegArray = JSON.parse(bowl.veggies)
-  const vegComponents = vegArray.map(veggie => {
-    return <li>{veggie}</li>
+  
+  const vegList = bowl.veggies.slice(1, bowl.veggies.length-1)
+  const vegArray = vegList.split(", ")
+  const vegComponents = vegArray.map((veggie) => {
+    return <li>{veggie.slice(1, veggie.length-1)}</li>
   })
 
   const redirect = () => {
@@ -44,7 +45,7 @@ export default function BowlCard({ bowl }) {
       setLikes([...likes, newLike])
       setItemLikes([...itemLikes, newLike])
     })
-    setShowLikeButton(!showLikeButton)
+    setShowAsLiked(!showAsLiked)
   }
 
   function deleteLike() {
@@ -60,25 +61,27 @@ export default function BowlCard({ bowl }) {
     setItemLikes(itemLikes.filter((like) => {
       return like.id !== userLike.id
     }))
-    setShowLikeButton(!showLikeButton)
+    setShowAsLiked(!showAsLiked)
   }
 
   return (
-    <div className="item" style={{width: "fit-content", padding: "15px"}}>
+    <div>
       <h2><Link to={`/items/${bowl.id}`}>{bowl.name}</Link></h2>
       <h3>$8 small / $13 large</h3>
-      <h3>{itemLikes.length} People Liked this Bowl</h3>
+      <h3></h3>
       <img src={Placeholder} style={{height: "150px"}}></img>
       <br></br>
-      {
-        showLikeButton ? 
-        (
-          <button onClick={() => {deleteLike()}}>🧡 Unlike this Bowl</button>
-        ) : 
-        (
-          <button onClick={() => {(currentUser) ? (createLike()) : (redirect())}}>♡ I like this Bowl</button>
-        )
-      }
+      <span>
+        {
+          showAsLiked ? 
+          (
+            <button onClick={() => {deleteLike()}}>🧡 Unlike this Bowl</button>
+          ) : 
+          (
+            <button onClick={() => {(currentUser) ? (createLike()) : (redirect())}}>♡ I like this Bowl</button>
+          )
+        }
+        {itemLikes.length} People Liked this Bowl</span>
       <hr width="45%"></hr>
       <h3>Ingredients:</h3>
       <p><strong>Base: </strong>{bowl.base}</p>

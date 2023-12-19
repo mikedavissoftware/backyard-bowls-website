@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 
-import CommentSection from "./CommentSection"
-import BowlDetail from "./BowlDetail"
+import CommentSection from "./bowl-page/CommentSection"
+import BowlDetail from "./bowl-page/BowlDetail"
 
 
 export default function BowlPage() {

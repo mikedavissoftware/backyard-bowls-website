@@ -4,11 +4,11 @@ import { useEffect, useState, createContext } from "react"
 import './App.css';
 
 import Header from './components/Header'
-import Menu from './components/Menu'
-import LoginPage from './components/LoginPage'
-import Home from './components/Home'
-import AccountPage from "./components/AccountPage"
-import BowlPage from "./components/BowlPage"
+import Menu from './components/pages/MenuPage'
+import LoginPage from './components/pages/LoginPage'
+import Home from './components/pages/HomePage'
+import AccountPage from "./components/pages/AccountPage"
+import BowlPage from "./components/pages/BowlPage"
 import Footer from "./components/Footer"
 
 export const GlobalContext = createContext()

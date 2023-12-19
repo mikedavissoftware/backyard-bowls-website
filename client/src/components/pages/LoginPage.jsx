@@ -1,15 +1,28 @@
 import { useState, useEffect } from "react"
 
-import LoginForm from "./LoginForm";
-import SignupForm from "./SignupForm";
+import LoginForm from "./login-page/LoginForm";
+import SignupForm from "./login-page/SignupForm";
 
 
 export default function LoginPage() {
 
   const [showLogin, setShowLogin] = useState(true)
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const newForm = {
+    username: '',
+    password: '',
+    passwordConfirmation: '',
+    image: '',
+    favBowl: '',
+    diet: ''
+  }
+
+  const [formData, setFormData] = useState(newForm)
+
+  function handleChange(e) {
+    setFormData({...formData, [e.target.name]: e.target.value})
+    console.log(formData)
+  }
 
   const [items, setItems] = useState([])
   useEffect(() => {
@@ -22,11 +35,11 @@ export default function LoginPage() {
   }, [showLogin])
 
   return (
-    <div>
+    <div className="container mx-auto">
 
       {showLogin ? (
         <>
-          <LoginForm username={username} setUsername={setUsername} password={password} setPassword={setPassword} />
+          <LoginForm formData={formData} handleChange={handleChange} />
           <p>
             Don't have an account? &nbsp;
             <button onClick={() => setShowLogin(false)}>
@@ -36,7 +49,7 @@ export default function LoginPage() {
         </>
       ) : (
         <>
-          <SignupForm items={items} username={username} setUsername={setUsername} password={password} setPassword={setPassword} />
+          <SignupForm items={items} formData={formData} handleChange={handleChange} />
           <p>
             Already have an account?
             <button onClick={() => setShowLogin(true)}>
