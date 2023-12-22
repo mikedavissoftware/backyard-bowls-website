@@ -144,12 +144,12 @@ export default function AccountPage() {
       <p><strong>Favorite Bowl: </strong>{currentUser.fav_bowl}</p>
       <p><strong>Diet: </strong>{currentUser.diet}</p>
 
-      <button onClick={deleteAccount}>Delete Account</button>
+      <button className="block mx-auto my-2 btn btn-primary border-2 border-primary" onClick={deleteAccount}>Delete Account</button>
       {(!showAccountEdit) ? (
-        <button onClick={switchAccountEdit} style={{marginBottom: "30px"}}>Edit Account</button>
+        <button className="block mx-auto my-2 btn btn-primary border-2 border-primary" onClick={switchAccountEdit} style={{marginBottom: "30px"}}>Edit Account</button>
       ) : (
         <>
-        <button onClick={switchAccountEdit}>Hide Edit Account</button>
+        <button className="block mx-auto my-2 btn btn-primary border-2 border-primary" onClick={switchAccountEdit}>Hide Edit Account</button>
         <hr width="60%"></hr>
         <h3>Edit Account Details</h3>
         <form onSubmit={submitEdits}>

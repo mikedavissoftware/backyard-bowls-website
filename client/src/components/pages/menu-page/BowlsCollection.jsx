@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import BowlCard from "./BowlCard"
 
 
-export default function BowlCollection({ bowls }) {
+export default function BowlsCollection({ bowls }) {
 
   const [allLikes, setAllLikes] = useState([])
   useEffect(() => {
