@@ -40,7 +40,7 @@ export default function MenuPage() {
 
   return (
     <div className="menu-container my-1">
-      <h1 className="text-3xl">🥗 BOWLS 🥗</h1>
+      <h1 className="text-4xl font-bold my-6">🥗 BOWLS 🥗</h1>
       <BowlCollection bowls={bowls} allLikes={allLikes} setAllLikes={setAllLikes} />
       <hr className="w-1/2 mx-auto my-4"></hr>
       <h1 className="text-3xl my-2">🍠 SIDES & DRINKS 🍹</h1>

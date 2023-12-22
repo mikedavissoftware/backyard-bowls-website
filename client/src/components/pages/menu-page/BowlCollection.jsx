@@ -20,7 +20,7 @@ export default function BowlCollection({ bowls }) {
   })
 
   return (
-    <div className="grid md:grid-cols-2 xl:grid-cols-3 mx-auto px-2">
+    <div className="grid md:grid-cols-2 xl:grid-cols-3 mx-6 px-2 gap-12">
       {bowlCards}
     </div>
   )
