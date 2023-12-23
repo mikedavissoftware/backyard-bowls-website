@@ -49,6 +49,7 @@ export default function SignupForm({ items, formData, handleChange }) {
     }).then((r) => {
       if (r.ok) {
         r.json().then((user) => setCurrentUser(user));
+        setErrors([])
       } else {
         r.json().then((err) => setErrors(err.errors));
       }

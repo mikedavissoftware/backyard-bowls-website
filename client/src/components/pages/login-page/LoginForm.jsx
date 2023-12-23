@@ -22,6 +22,7 @@ export default function LoginForm({ formData, handleChange }) {
     }).then((r) => {
       if (r.ok) {
         r.json().then((currentUser) => setCurrentUser(currentUser));
+        setErrors([])
         redirect()
       } else {
         r.json().then((err) => setErrors(err.errors));

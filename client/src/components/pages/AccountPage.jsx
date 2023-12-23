@@ -122,6 +122,7 @@ export default function AccountPage() {
       method: "DELETE"
     })
     setCurrentUser(null)
+    setErrors([])
     redirect()
   }
 
@@ -133,7 +134,7 @@ export default function AccountPage() {
     null
   )
 
-  if (!currentUser) return <h2>Loading...</h2>
+  if (!currentUser) return <span className="loading loading-bars loading-lg"></span>
 
   return (
     <div className="my-8">
