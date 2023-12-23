@@ -91,50 +91,50 @@ puts "🌱 Seeding items..."
     name: "Boulder Chips",
     category: "Side",
     image: "https://assets-global.website-files.com/622a65eb1d2ac4806c863e1c/6271acfb7412c31d3a294b0e_12058_Boulder_Canyon_5.25oz_Classic_Sea_Salt_Avacado_Oil_CC_Kettle_Chip_Bag_Front.webp",
-    base: "NA",
-    protein: "NA",
-    veggies: "NA",
-    dressing: "NA",
+    base: "",
+    protein: "",
+    veggies: "",
+    dressing: "",
     price: 2
   )
   Item.create(
     name: "Kombucha",
     category: "Drink",
     image: "https://cdn.shopify.com/s/files/1/0281/6383/3891/products/Kombucha-Water---New-Bottle_400x.png?v=1675707059",
-    base: "NA",
-    protein: "NA",
-    veggies: "NA",
-    dressing: "NA",
+    base: "",
+    protein: "",
+    veggies: "",
+    dressing: "",
     price: 5
   )
   Item.create(
     name: "Water",
     category: "Drink",
     image: "https://broncoburgers.com/wp-content/uploads/2021/07/Bottled-Water.png",
-    base: "NA",
-    protein: "NA",
-    veggies: "NA",
-    dressing: "NA",
+    base: "",
+    protein: "",
+    veggies: "",
+    dressing: "",
     price: 3
   )
   Item.create(
     name: "Yerba Mate",
     category: "Drink",
-    image: "https://guayaki.com/wp-content/uploads/2021/05/Revel-Berry_315X500-o.png",
-    base: "NA",
-    protein: "NA",
-    veggies: "NA",
-    dressing: "NA",
+    image: "https://images.squarespace-cdn.com/content/v1/59c16a752278e7bd79dd5a12/1569624132573-N1IJDLXBW4PT7UYIJSLN/enlightenmint.png",
+    base: "",
+    protein: "",
+    veggies: "",
+    dressing: "",
     price: 3
   )
   Item.create(
     name: diets,
     category: "Diets",
-    image: "NA",
-    base: "NA",
-    protein: "NA",
-    veggies: "NA",
-    dressing: "NA",
+    image: "",
+    base: "",
+    protein: "",
+    veggies: "",
+    dressing: "",
     price: 0
   )
 # end
@@ -180,12 +180,12 @@ puts "🌱 Seeding comments..."
 
 # LIKES
 puts "🌱 Seeding likes..."
-(1..bowls.length).to_a.map{|bowl_id|
+(1..(Item.count - 1)).to_a.map{|item_id|
   user_ids = (1..User.all.length).to_a.shuffle.take(rand(2..5))
   user_ids.map{|user_id|
     Like.create(
       user_id: user_id,
-      item_id: bowl_id
+      item_id: item_id
     )
   }
 }

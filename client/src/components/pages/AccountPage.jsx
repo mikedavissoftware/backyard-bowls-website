@@ -136,77 +136,119 @@ export default function AccountPage() {
   if (!currentUser) return <h2>Loading...</h2>
 
   return (
-    <div>
+    <div className="my-8">
+      
+      <h1 className="mb-6 text-3xl font-bold">Your Account</h1>
+
       {showErrors}
 
-      <img src={currentUser.image} style={{marginTop: "20px", width: "45%"}}></img>
-      <p><strong>Username: </strong>{currentUser.username}</p>
-      <p><strong>Favorite Bowl: </strong>{currentUser.fav_bowl}</p>
-      <p><strong>Diet: </strong>{currentUser.diet}</p>
+      <div className="avatar">
+        <div className="w-96 mask mask-squircle">
+          <img src={currentUser.image} />
+        </div>
+      </div>
 
-      <button className="block mx-auto my-2 btn btn-primary border-2 border-primary" onClick={deleteAccount}>Delete Account</button>
+      <div className="my-4">
+        <h3 className="text-xl"><strong>Username: </strong>{currentUser.username}</h3>
+        <h3 className="text-xl"><strong>Favorite Bowl: </strong>{currentUser.fav_bowl}</h3>
+        <h3 className="text-xl"><strong>Diet: </strong>{currentUser.diet}</h3>
+      </div>
+
+      <button className="block mx-auto my-4 btn btn-primary border-2 border-primary" onClick={deleteAccount}>Delete Account</button>
       {(!showAccountEdit) ? (
-        <button className="block mx-auto my-2 btn btn-primary border-2 border-primary" onClick={switchAccountEdit} style={{marginBottom: "30px"}}>Edit Account</button>
+        <button className="block mx-auto my-4 btn btn-primary border-2 border-primary" onClick={switchAccountEdit} style={{marginBottom: "30px"}}>Edit Account</button>
       ) : (
         <>
-        <button className="block mx-auto my-2 btn btn-primary border-2 border-primary" onClick={switchAccountEdit}>Hide Edit Account</button>
-        <hr width="60%"></hr>
-        <h3>Edit Account Details</h3>
+        <button className="block mx-auto my-4 btn btn-primary border-2 border-primary" onClick={switchAccountEdit}>Hide Edit Account</button>
+        <hr className="w-1/2 mx-auto my-8"></hr>
+        <h2 className="text-2xl font-bold">Edit Account Details</h2>
+
         <form onSubmit={submitEdits}>
-          <label><strong>Edit Username: </strong></label>
-          <input
-            type="text"
-            name="username"
-            placeholder={`Change from ${currentUser.username}`}
-            value={formData.username}
-            onChange={handleChange}
-          />
+          <div className="form-control max-w-2xl mx-auto">
+            <label className="label">
+              <span className="label-text mx-auto text-black dark:text-white">Change Your Username:</span>
+            </label>
+            <input
+              id="username"
+              name="username"
+              type="text"
+              placeholder={`Change from ${currentUser.username}`}
+              value={formData.username}
+              onChange={handleChange}
+              className="input input-bordered w-full max-w-xs mx-auto text-white text-lg"
+            />
+          </div>
 
-          <br></br>
-          <label><strong>Edit Password: </strong></label>
-          <input
-            type="password"
-            name="password"
-            placeholder={`Enter New Password...`}
-            value={formData.password}
-            onChange={handleChange}
-          />
+          <div className="form-control max-w-2xl mx-auto">
+            <label className="label">
+              <span className="label-text mx-auto text-black dark:text-white">Change Your Password:</span>
+            </label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Type new password here..."
+              value={formData.password}
+              onChange={handleChange}
+              className="input input-bordered w-full max-w-xs mx-auto text-white text-lg"
+            />
+          </div>
 
-          <br></br>
-          <label><strong>Confirm New Password: </strong></label>
-          <input
-            type="password"
-            name="passwordConfirmation"
-            placeholder={`Confirm New Password...`}
-            value={formData.passwordConfirmation}
-            onChange={handleChange}
-          />
+          <div className="form-control max-w-2xl mx-auto">
+            <label className="label">
+              <span className="label-text mx-auto text-black dark:text-white">Confirm Your New Password:</span>
+            </label>
+            <input
+              id="password-confirmation"
+              name="passwordConfirmation"
+              type="password"
+              placeholder="Confirm new password..."
+              value={formData.passwordConfirmation}
+              onChange={handleChange}
+              className="input input-bordered w-full max-w-xs mx-auto text-white text-lg"
+            />
+          </div>
 
-          <br></br>
-          <label><strong>Update Profile Picture: </strong></label>
-          <input
-            type="text"
-            name="image"
-            placeholder={`Change from ${currentUser.image}`}
-            value={formData.image}
-            onChange={handleChange}
-          />
+          <div className="form-control max-w-2xl mx-auto">
+            <label className="label">
+              <span className="label-text mx-auto text-black dark:text-white">Change Your Profile Picture:</span>
+            </label>
+            <input
+              id="image"
+              name="image"
+              type="text"
+              placeholder="Enter new profile picture URL..."
+              value={formData.image}
+              onChange={handleChange}
+              className="input input-bordered w-full max-w-xs mx-auto text-white text-lg"
+            />
+          </div>
 
-          <br></br>
-          <label><strong>Change Your Favorite Bowl: </strong></label>
-          <select name="favBowl" onChange={handleChange}>
-            {bowlOptions}
-          </select>
+          <div className="form-control max-w-2xl mx-auto">
+            <label className="label">
+              <span className="label-text mx-auto text-black dark:text-white">Change Your Favorite Bowl:</span>
+            </label>
+            <select className="select select-bordered w-full max-w-xs mx-auto" name="favBowl" onChange={handleChange}>
+              <option value={"unspecified"} disabled selected>Select Your Favorite Bowl...</option>
+              {bowlOptions}
+            </select>
+          </div>
 
-          <br></br>
-          <label><strong>Change Your Diet: </strong></label>
-          <select name="diet" onChange={handleChange}>
-            {dietOptions}
-          </select>
+          <div className="form-control max-w-2xl mx-auto">
+            <label className="label">
+              <span className="label-text mx-auto text-black dark:text-white">Your Diet:</span>
+            </label>
+            <select className="select select-bordered w-full max-w-xs mx-auto" name="diet" onChange={handleChange}>
+              <option value={"unspecified"} disabled selected>Select Your Diet...</option>
+              {dietOptions}
+            </select>
+          </div>
 
-          <br></br>
-          <button type="submit">Submit Changes</button>
-          
+          <div className="grid my-5 max-w-2xl mx-auto">
+            <div>
+              <button type="submit" className="block mx-auto my-4 btn btn-primary border-2 border-primary"><span className="drop-shadow-sm-dark">Update Account</span></button>
+            </div>
+          </div>
         </form>
         </>
       )}

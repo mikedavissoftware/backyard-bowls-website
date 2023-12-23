@@ -65,32 +65,36 @@ export default function BowlDetail({ bowl }) {
   }
 
   return (
-    <div>
-      <h2><Link to={`/items/${bowl.id}`}>{bowl.name}</Link></h2>
-      <h3>$8 small / $13 large</h3>
-      <h3></h3>
-      <img src={Placeholder} style={{height: "150px"}}></img>
-      <br></br>
-      <span>
+    <div className="mb-4">
+      <h1 className="mb-6 text-3xl font-bold">{bowl.name}</h1>
+      <img src={bowl.image} className="w-96 rounded-2xl my-4"></img>
+      <div>
         {
           showAsLiked ? 
           (
-            <button onClick={() => {deleteLike()}}>🧡 Unlike this Bowl</button>
+            <button className="btn btn-primary" onClick={() => {deleteLike()}}>🧡</button>
           ) : 
           (
-            <button onClick={() => {(currentUser) ? (createLike()) : (redirect())}}>♡ I like this Bowl</button>
+            <button className="btn btn-primary border-2 border-primary" onClick={() => {(currentUser) ? (createLike()) : (redirect())}}>♡ Click to Like</button>
           )
         }
-        {itemLikes.length} People Liked this Bowl</span>
-      <hr width="45%"></hr>
-      <h3>Ingredients:</h3>
-      <p><strong>Base: </strong>{bowl.base}</p>
-      <p><strong>Protein: </strong>{bowl.protein}</p>
-      <p><strong>Veggies: </strong></p>
-      <ul>
-        {vegComponents}
-      </ul>
-      <p><strong>Dressing: </strong>{bowl.dressing}</p>
+      </div>
+      <span className="font-bold block my-2">{itemLikes.length} Users Like this Bowl</span>
+
+      <hr className="w-1/2 mx-auto my-4"/>
+
+      <h3 className="mt-2 mb-4 text-xl font-bold">Ingredients:</h3>
+      <div className="text-slate-600 bg-slate-300 px-4 py-2 rounded-md w-fit mx-auto my-7">
+        <span className="block"><strong>Base: </strong>{bowl.base}</span>
+        <span className="block"><strong>Protein: </strong>{bowl.protein}</span>
+        <div>
+          <span className="block"><strong>Veggies: </strong></span>
+          <ul>
+            {vegComponents}
+          </ul>
+        </div>
+        <span className="block"><strong>Dressing: </strong>{bowl.dressing}</span>
+      </div>
     </div>
   )
 }
