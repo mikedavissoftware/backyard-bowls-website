@@ -60,7 +60,7 @@ export default function SideCard({ item, bowlName }) {
   return (
     <div className="card bg-base-100 shadow-xl image-full m-2">
       <figure className=" max-h-96"><img src={(image) ? (image) : (Placeholder)} className=""/></figure>
-      <div className="card-body">
+      <div className="card-body drop-shadow-dark1">
         <h2 className="card-title justify-center font-bold">{name}</h2>
         <p>Pairs great with {bowlName}!</p>
         <div className="card-actions justify-end">
@@ -70,7 +70,7 @@ export default function SideCard({ item, bowlName }) {
               <button className="btn btn-primary" onClick={() => {deleteLike()}}>🧡</button>
             ) : 
             (
-              <button className="btn btn-primary border-2 border-primary" onClick={() => {(currentUser) ? (createLike()) : (redirect())}}>♡ Click to Like</button>
+              <button className="btn btn-primary border-2 border-primary" onClick={() => {(currentUser) ? (createLike()) : (redirect())}}>♡</button>
             )
           }
         </div>

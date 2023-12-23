@@ -25,9 +25,9 @@ export default function AccountPage() {
       }).filter(bowlName => {
         return bowlName !== currentUser.fav_bowl
       })
-      const userFavOption = <option value={currentUser.fav_bowl} selected>{currentUser.fav_bowl}</option>
-      const otherBowlOptions = otherNameValues.map(nameValue => {
-        return <option value={nameValue}>{nameValue}</option>
+      const userFavOption = <option key={1} value={currentUser.fav_bowl} selected>{currentUser.fav_bowl}</option>
+      const otherBowlOptions = otherNameValues.map((nameValue, index) => {
+        return <option key={index + 2} value={nameValue}>{nameValue}</option>
       })
       setBowlOptions([userFavOption, otherBowlOptions])
 

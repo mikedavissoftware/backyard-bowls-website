@@ -17,7 +17,7 @@ export default function CommentForm({ itemId, isCurrentUserComment, setIsCurrent
 
   function numberOptions(max) {        
     const numbersArray = []
-    for (let i=0; i<max; i++) {
+    for (let i=0; i<=max; i++) {
         numbersArray.push(
             <option value={i}>{i}</option>
         )
@@ -61,33 +61,38 @@ export default function CommentForm({ itemId, isCurrentUserComment, setIsCurrent
   if (isCurrentUserComment) return null
 
   return (
+
     <div>
       {(!showCommentForm) ? (
-        <button onClick={() => toggleCommentForm()}>Leave a Comment</button>
+        <button className="btn btn-primary" onClick={() => toggleCommentForm()}>Leave a Comment</button>
       ) : (
         <>
-        <button onClick={() => toggleCommentForm()}>Hide Comment Form</button>
-        <p>Leave your comment below!</p>
+        <button className="btn btn-primary" onClick={() => toggleCommentForm()}>Hide Comment Form</button>
         <form onSubmit={submitComment}>
-          <label><strong>Rating: </strong></label>
-          <br></br>
-          <select name="rating" onChange={(e) => {handleChange(e)}}>
-            <option value="" disabled selected>How Delicious</option>
-            {numberOptions(11)}
-          </select>
-          <br></br>
+          <div className="form-control max-w-2xl mx-auto">
+            <label className="label">
+              <span className="label-text mx-auto text-black dark:text-white">Rating:</span>
+            </label>
+            <select className="select select-bordered w-full max-w-xs mx-auto text-lg" name="rating" onChange={(e) => {handleChange(e)}}>
+              <option value="" disabled selected>How Delicious</option>
+              {numberOptions(10)}
+            </select>
+          </div>
 
-          <label><strong>Content: </strong></label>
-          <br></br>
-          <textarea
-            name="content"
-            id="comment-box"
-            rows="5"
-            cols="50"
-            value={formData.content}
-            placeholder="Write your comment here..."
-            onChange={(e) => {handleChange(e)}}
-          ></textarea>
+          <div className="form-control max-w-2xl mx-auto">
+            <label className="label">
+              <span className="label-text mx-auto text-black dark:text-white">Content:</span>
+            </label>
+            <textarea
+              name="content"
+              id="comment-box"
+              value={formData.content}
+              placeholder="Write your comment here..."
+              onChange={(e) => {handleChange(e)}}
+              className="textarea input-bordered w-full max-w-xs mx-auto text-white text-lg"
+            />
+          </div>
+          
 
           <br></br>
           <button type="submit">Submit Your Comment</button>

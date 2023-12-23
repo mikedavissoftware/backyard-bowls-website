@@ -15,7 +15,11 @@ module.exports = {
         banner: "url('/src/assets/images/backdrop.png')"
       },
       dropShadow: {
-        dark: '5px 5px 5px rgb(0 0 0 / 0.80)'
+        dark1: '1px 1px 1px rgb(0 0 0 / 0.80)',
+        dark2: '2px 2px 2px rgb(0 0 0 / 0.80)',
+        dark3: '3px 3px 3px rgb(0 0 0 / 0.80)',
+        dark4: '4px 4px 4px rgb(0 0 0 / 0.80)',
+        dark5: '5px 5px 5px rgb(0 0 0 / 0.80)'
       },
     },
   },

@@ -74,10 +74,11 @@ export default function BowlCard({ bowl }) {
   return (
     <div className="card bg-base-100 shadow-xl image-full m-2">
       <figure className=""><img src={(image) ? (image) : (Placeholder)} className=""/></figure>
-      <div className="card-body">
+      <div className="card-body drop-shadow-dark1">
         <h2 className="card-title justify-center font-bold">{name}</h2>
         <p>Our <strong>{name}</strong> has our classic <strong>{base}</strong> base with <strong>{protein}</strong> as its protein, and rounding out the ingredients with: <ul><strong>{vegComponents}</strong></ul> Last, but not least, this delicious bowl is finished with a dressing of <strong>{dressing}</strong>. Bon appétit!</p>
         <div className="card-actions justify-end">
+          <button className="btn btn-primary" onClick={redirectBowlPage}>More Details</button>
           {
             showLikeButton ? 
             (
@@ -87,7 +88,6 @@ export default function BowlCard({ bowl }) {
               <button className="btn btn-primary border-2 border-primary" onClick={() => {(currentUser) ? (createLike()) : (redirect())}}>♡</button>
             )
           }
-          <button className="btn btn-primary" onClick={redirectBowlPage}>More Details</button>
         </div>
       </div>
     </div>
