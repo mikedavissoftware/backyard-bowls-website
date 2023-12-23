@@ -126,7 +126,7 @@ export default function AccountPage() {
     redirect()
   }
 
-  const showErrors = (errors) ? (
+  const errorComponents = (errors) ? (
     errors.map((error) => {
       return <h4 style={{color: "#dd0000"}}>{error}</h4>
     })
@@ -141,7 +141,9 @@ export default function AccountPage() {
       
       <h1 className="mb-6 text-3xl font-bold">Your Account</h1>
 
-      {showErrors}
+      <div>
+        {errorComponents}
+      </div>
 
       <div className="avatar">
         <div className="w-96 mask mask-squircle">
@@ -149,18 +151,18 @@ export default function AccountPage() {
         </div>
       </div>
 
-      <div className="my-4">
+      <div className="text-slate-600 bg-slate-300 px-4 py-2 rounded-md w-fit mx-auto my-7">
         <h3 className="text-xl"><strong>Username: </strong>{currentUser.username}</h3>
         <h3 className="text-xl"><strong>Favorite Bowl: </strong>{currentUser.fav_bowl}</h3>
         <h3 className="text-xl"><strong>Diet: </strong>{currentUser.diet}</h3>
       </div>
 
-      <button className="block mx-auto my-4 btn btn-primary border-2 border-primary" onClick={deleteAccount}>Delete Account</button>
+      <button className="inline-block mx-1 my-4 btn btn-primary border-2 border-primary" onClick={deleteAccount}>Delete Account</button>
       {(!showAccountEdit) ? (
-        <button className="block mx-auto my-4 btn btn-primary border-2 border-primary" onClick={switchAccountEdit} style={{marginBottom: "30px"}}>Edit Account</button>
+        <button className="inline-block mx-1 my-4 btn btn-primary border-2 border-primary" onClick={switchAccountEdit} style={{marginBottom: "30px"}}>Edit Account</button>
       ) : (
         <>
-        <button className="block mx-auto my-4 btn btn-primary border-2 border-primary" onClick={switchAccountEdit}>Hide Edit Account</button>
+        <button className="inline-block mx-1 my-4 btn btn-primary border-2 border-primary" onClick={switchAccountEdit}>Hide Edit Account</button>
         <hr className="w-1/2 mx-auto my-8"></hr>
         <h2 className="text-2xl font-bold">Edit Account Details</h2>
 
@@ -229,7 +231,7 @@ export default function AccountPage() {
             <label className="label">
               <span className="label-text mx-auto text-black dark:text-white">Change Your Favorite Bowl:</span>
             </label>
-            <select className="select select-bordered w-full max-w-xs mx-auto" name="favBowl" onChange={handleChange}>
+            <select className="select select-bordered w-full max-w-xs mx-auto text-lg" name="favBowl" onChange={handleChange}>
               <option value={"unspecified"} disabled selected>Select Your Favorite Bowl...</option>
               {bowlOptions}
             </select>
@@ -239,7 +241,7 @@ export default function AccountPage() {
             <label className="label">
               <span className="label-text mx-auto text-black dark:text-white">Your Diet:</span>
             </label>
-            <select className="select select-bordered w-full max-w-xs mx-auto" name="diet" onChange={handleChange}>
+            <select className="select select-bordered w-full max-w-xs mx-auto text-lg" name="diet" onChange={handleChange}>
               <option value={"unspecified"} disabled selected>Select Your Diet...</option>
               {dietOptions}
             </select>

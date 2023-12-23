@@ -84,7 +84,7 @@ export default function BowlCard({ bowl }) {
               <button className="btn btn-primary" onClick={() => {deleteLike()}}>🧡</button>
             ) : 
             (
-              <button className="btn btn-primary border-2 border-primary" onClick={() => {(currentUser) ? (createLike()) : (redirect())}}>♡ Click to Like</button>
+              <button className="btn btn-primary border-2 border-primary" onClick={() => {(currentUser) ? (createLike()) : (redirect())}}>♡</button>
             )
           }
           <button className="btn btn-primary" onClick={redirectBowlPage}>More Details</button>

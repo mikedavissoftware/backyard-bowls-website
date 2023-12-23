@@ -30,7 +30,7 @@ export default function LoginForm({ formData, handleChange }) {
     });
   }
 
-  const showErrors = (errors) ? (
+  const errorComponents = (errors) ? (
     errors.map((error) => {
       return <h4 style={{color: "#dd0000"}}>{error}</h4>
     })
@@ -42,11 +42,13 @@ export default function LoginForm({ formData, handleChange }) {
     <div>
       <h2 className="font-bold text-white text-2xl">Login</h2>
 
-      {showErrors}
+      <div className="mt-2">
+        {errorComponents}
+      </div>
 
       <form onSubmit={handleSubmit}>
         
-        <div className="form-control max-w-2xl mx-auto">
+        <div className="form-control max-w-2xl mx-auto mb-1d">
           <label className="label">
             <span className="label-text mx-auto text-black dark:text-white">Username:</span>
           </label>

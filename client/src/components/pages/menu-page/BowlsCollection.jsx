@@ -22,7 +22,7 @@ export default function BowlsCollection({ bowls }) {
   if (!bowls) return <span className="loading loading-bars loading-lg"></span>
 
   return (
-    <div className="grid md:grid-cols-2 xl:grid-cols-3 mx-6 px-2 gap-12">
+    <div className="grid md:grid-cols-2 xl:grid-cols-3 grid mx-6 px-2 gap-12">
       {bowlCards}
     </div>
   )
