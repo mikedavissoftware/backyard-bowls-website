@@ -69,7 +69,7 @@ export default function CommentEditForm({ comment, setShowEditForm, setIsCurrent
       </form>
 
         <button className="btn btn-primary" onClick={setShowEditForm(false)}>Cancel Comment Edits</button>
-        <form className="mb-8" onSubmit={submitComment}>
+        <form className="mb-8" onSubmit={submitEditComment}>
           <div className="form-control max-w-2xl mx-auto">
             <label className="label">
               <span className="label-text mx-auto text-black dark:text-white">Rating:</span>

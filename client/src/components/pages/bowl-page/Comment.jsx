@@ -43,22 +43,22 @@ export default function Comment({ comment, currentUserComment, setIsCurrentUserC
 
   return (
     <div>
-      <div className="comment">
-        <div className="comment-picture">
-          <img src={comment.user.image}></img>
+      <div className="flex bg-slate-300 rounded-2xl overflow-hidden my-4">
+        <div>
+          <img src={comment.user.image} className="h-48"></img>
         </div>
-        <div className="comment-content">
-          <h3>{conditionalAttributes.title} rated this bowl {rating}/10</h3>
-          <p>{content}</p>
-          <p><em>{conditionalAttributes.possessive} favorite bowl is <strong>{user.fav_bowl}</strong></em></p>
+        <div className="py-2 px-3 text-black text-left">
+          <h3><span className="font-bold">{conditionalAttributes.title} <span className="italic">(favorite: {user.fav_bowl})</span></span></h3>
+          <p>Rating: <span className="font-bold">{rating}/10</span></p>
+          <p className="italic">"{content}"</p>
           {(currentUserComment[0] && currentUserComment[0].id === comment.id) ? (
             <span>
               {(!showEditForm) ? (
-                <button onClick={() => setShowEditForm(true)}>Edit My Comment</button>
+                <button className="btn btn-secondary inline m-2" onClick={() => setShowEditForm(true)}>Edit My Comment</button>
               ) : (
-                <button onClick={() => setShowEditForm(false)}>Hide Edit Form</button>
+                <button className="btn btn-secondary inline m-2" onClick={() => setShowEditForm(false)}>Hide Edit Form</button>
               )}
-              <button onClick={deleteComment}>Delete My Comment</button>
+              <button className="btn btn-secondary inline m-2" onClick={deleteComment}>Delete My Comment</button>
             </span>
           ) : (
             <></>

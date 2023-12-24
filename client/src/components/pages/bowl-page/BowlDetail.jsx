@@ -83,17 +83,18 @@ export default function BowlDetail({ bowl }) {
 
       <hr className="w-1/2 mx-auto my-4"/>
 
-      <h3 className="mt-2 mb-4 text-xl font-bold">Ingredients:</h3>
+      
       <div className="text-slate-600 bg-slate-300 px-4 py-2 rounded-md w-fit mx-auto my-7">
-        <span className="block my-2 p-1 bg-slate-400 rounded-md"><strong>Base: </strong>{bowl.base}</span>
-        <span className="block my-2 p-1 bg-slate-400 rounded-md"><strong>Protein: </strong>{bowl.protein}</span>
-        <div className="my-2 p-1 bg-slate-400 rounded-md">
+        <h3 className="mt-2 mb-4 text-xl font-bold">Ingredients:</h3>
+        <span className="block my-2 py-1 px-2 bg-slate-400 rounded-md"><strong>Base: </strong>{bowl.base}</span>
+        <span className="block my-2 py-1 px-2 bg-slate-400 rounded-md"><strong>Protein: </strong>{bowl.protein}</span>
+        <div className="my-2 py-1 px-2 bg-slate-400 rounded-md">
           <span className="block"><strong>Veggies: </strong></span>
           <ul>
             {vegComponents}
           </ul>
         </div>
-        <span className="block my-2 p-1 bg-slate-400 rounded-md"><strong>Dressing: </strong>{bowl.dressing}</span>
+        <span className="block my-2 py-1 px-2 bg-slate-400 rounded-md"><strong>Dressing: </strong>{bowl.dressing}</span>
       </div>
     </div>
   )
