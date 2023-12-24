@@ -64,11 +64,11 @@ export default function CommentForm({ itemId, isCurrentUserComment, setIsCurrent
 
     <div>
       {(!showCommentForm) ? (
-        <button className="btn btn-primary" onClick={() => toggleCommentForm()}>Leave a Comment</button>
+        <button className="btn btn-primary mb-4" onClick={() => toggleCommentForm()}>Leave a Comment</button>
       ) : (
         <>
         <button className="btn btn-primary" onClick={() => toggleCommentForm()}>Hide Comment Form</button>
-        <form onSubmit={submitComment}>
+        <form className="mb-8" onSubmit={submitComment}>
           <div className="form-control max-w-2xl mx-auto">
             <label className="label">
               <span className="label-text mx-auto text-black dark:text-white">Rating:</span>
@@ -92,10 +92,7 @@ export default function CommentForm({ itemId, isCurrentUserComment, setIsCurrent
               className="textarea input-bordered w-full max-w-xs mx-auto text-white text-lg"
             />
           </div>
-          
-
-          <br></br>
-          <button type="submit">Submit Your Comment</button>
+          <button className="btn btn-primary" type="submit">Submit Your Comment</button>
         </form>
         </>
       )}

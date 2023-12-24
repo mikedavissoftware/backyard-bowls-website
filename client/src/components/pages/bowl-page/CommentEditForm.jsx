@@ -67,6 +67,34 @@ export default function CommentEditForm({ comment, setShowEditForm, setIsCurrent
         <br></br>
         <button type="submit">Submit Your Edits</button>
       </form>
+
+        <button className="btn btn-primary" onClick={setShowEditForm(false)}>Cancel Comment Edits</button>
+        <form className="mb-8" onSubmit={submitComment}>
+          <div className="form-control max-w-2xl mx-auto">
+            <label className="label">
+              <span className="label-text mx-auto text-black dark:text-white">Rating:</span>
+            </label>
+            <select className="select select-bordered w-full max-w-xs mx-auto text-lg" name="rating" onChange={(e) => {handleChange(e)}}>
+              <option value="" disabled selected>How Delicious</option>
+              {numberOptions(10)}
+            </select>
+          </div>
+
+          <div className="form-control max-w-2xl mx-auto">
+            <label className="label">
+              <span className="label-text mx-auto text-black dark:text-white">Content:</span>
+            </label>
+            <textarea
+              name="content"
+              id="comment-box"
+              value={formData.content}
+              placeholder="Write your comment here..."
+              onChange={(e) => {handleChange(e)}}
+              className="textarea input-bordered w-full max-w-xs mx-auto text-white text-lg"
+            />
+          </div>
+          <button className="btn btn-primary" type="submit">Submit Your Comment</button>
+        </form>
     </div>
   )
 }

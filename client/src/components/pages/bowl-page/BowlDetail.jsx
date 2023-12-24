@@ -75,7 +75,7 @@ export default function BowlDetail({ bowl }) {
             <button className="btn btn-primary" onClick={() => {deleteLike()}}>🧡</button>
           ) : 
           (
-            <button className="btn btn-primary border-2 border-primary" onClick={() => {(currentUser) ? (createLike()) : (redirect())}}>♡ Click to Like</button>
+            <button className="btn btn-primary border-2 border-primary" onClick={() => {(currentUser) ? (createLike()) : (redirect())}}>♡</button>
           )
         }
       </div>
@@ -85,15 +85,15 @@ export default function BowlDetail({ bowl }) {
 
       <h3 className="mt-2 mb-4 text-xl font-bold">Ingredients:</h3>
       <div className="text-slate-600 bg-slate-300 px-4 py-2 rounded-md w-fit mx-auto my-7">
-        <span className="block"><strong>Base: </strong>{bowl.base}</span>
-        <span className="block"><strong>Protein: </strong>{bowl.protein}</span>
-        <div>
+        <span className="block my-2 p-1 bg-slate-400 rounded-md"><strong>Base: </strong>{bowl.base}</span>
+        <span className="block my-2 p-1 bg-slate-400 rounded-md"><strong>Protein: </strong>{bowl.protein}</span>
+        <div className="my-2 p-1 bg-slate-400 rounded-md">
           <span className="block"><strong>Veggies: </strong></span>
           <ul>
             {vegComponents}
           </ul>
         </div>
-        <span className="block"><strong>Dressing: </strong>{bowl.dressing}</span>
+        <span className="block my-2 p-1 bg-slate-400 rounded-md"><strong>Dressing: </strong>{bowl.dressing}</span>
       </div>
     </div>
   )
