@@ -37,7 +37,7 @@ export default function CommentsSection({ bowlId }) {
   if (!commentComponents) return <h4>Loading...</h4>
 
   return (
-    <div className="comments-container">
+    <div className="">
       <h3 className="mt-2 mb-4 text-xl font-bold">Ratings of this Bowl:</h3>
       {(!currentUser) ? (
         <h4>Please <Link to="/login">log in</Link> to rate this bowl.</h4>
