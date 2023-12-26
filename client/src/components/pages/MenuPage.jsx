@@ -20,7 +20,6 @@ export default function MenuPage() {
     fetch(`/api/items`)
     .then(r => r.json())
     .then(itemsData => {
-      console.log(itemsData)
       setItems(itemsData)
     })
   }, [allLikes])

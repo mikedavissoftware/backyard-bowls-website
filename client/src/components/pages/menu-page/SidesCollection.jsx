@@ -5,14 +5,9 @@ import SideCard from "./SideCard"
 
 export default function SidesCollection({ sidesDrinks, bowlNames }) {
 
-  const sidesComponents = sidesDrinks.map(item => {
+  const sidesComponents = sidesDrinks.map((item, index) => {
     return (
-      // <div className="item" style={{width: "fit-content", padding: "15px"}}>
-      //   <h2><Link to={`/items/${item.id}`}>{item.name}</Link></h2>
-      //   <h3>${item.price}</h3>
-      //   <img src={item.image} style={{height: "150px"}}></img>
-      // </div>
-      <SideCard item={item} bowlName={bowlNames[Math.floor(Math.random() * bowlNames.length)]} />
+      <SideCard key={index + 1} item={item} bowlName={bowlNames[Math.floor(Math.random() * bowlNames.length)]} />
     )
   })
 

@@ -10,8 +10,6 @@ export default function BowlCard({ bowl }) {
 
   const { currentUser, history, setErrors } = useContext(GlobalContext)
 
-  console.log(bowl)
-
   const { id, name, category, image, base, protein, veggies, dressing, price, comments } = bowl
 
   const [likes, setLikes] = useState(bowl.likes)
@@ -26,8 +24,8 @@ export default function BowlCard({ bowl }) {
   const [itemLikes, setItemLikes] = useState(bowl.likes)
 
   const vegArray = JSON.parse(bowl.veggies)
-  const vegComponents = vegArray.map(veggie => {
-    return <li>{veggie}</li>
+  const vegComponents = vegArray.map((veggie, index) => {
+    return <li key={index + 1}>{veggie}</li>
   })
 
   const redirect = () => {

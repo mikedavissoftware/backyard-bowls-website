@@ -25,11 +25,11 @@ export default function AccountPage() {
       }).filter(bowlName => {
         return bowlName !== currentUser.fav_bowl
       })
-      const userFavOption = <option key={1} value={currentUser.fav_bowl} selected>{currentUser.fav_bowl}</option>
+      const userFavOption = <option key={1} value={currentUser.fav_bowl}>{currentUser.fav_bowl}</option>
       const otherBowlOptions = otherNameValues.map((nameValue, index) => {
         return <option key={index + 2} value={nameValue}>{nameValue}</option>
       })
-      setBowlOptions([userFavOption, otherBowlOptions])
+      setBowlOptions([userFavOption, ...otherBowlOptions])
 
       const dietsObj = items.filter((item) => {
         return item.category === "Diets"
@@ -37,11 +37,11 @@ export default function AccountPage() {
       const otherDietsArray = JSON.parse(dietsObj[0].name).filter((diet) => {
         return diet !== currentUser.diet
       })
-      const userDietOption = <option value={currentUser.diet}>{currentUser.diet}</option>
+      const userDietOption = <option key={1} value={currentUser.diet}>{currentUser.diet}</option>
       const otherDietOptions = otherDietsArray.map((diet, index) => {
-        return <option key={index + 1} value={diet}>{diet}</option>
+        return <option key={index + 2} value={diet}>{diet}</option>
       })
-      setDietOptions([userDietOption, otherDietOptions])
+      setDietOptions([userDietOption, ...otherDietOptions])
     })
   }, [currentUser])
 
