@@ -23,5 +23,22 @@ module.exports = {
       },
     },
   },
+  daisyui: {
+    themes: [
+      {
+        backyardBowls: {
+          "primary": "#80b217",
+          "secondary": "#13242f",
+          "accent": "#ffa500",
+          "neutral": "#333",
+          "base-100": "#222",
+          "info": "#fadc00",
+          "success": "#1f9045",
+          "warning": "#df1a22",
+          "error": "#df1a22",
+        },
+      }
+    ]
+  },
   plugins: [require("daisyui")],
 }

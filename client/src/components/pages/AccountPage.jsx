@@ -157,12 +157,25 @@ export default function AccountPage() {
         <h3 className="text-xl"><strong>Diet: </strong>{currentUser.diet}</h3>
       </div>
 
-      <button className="inline-block mx-1 my-4 btn btn-primary border-2 border-primary" onClick={deleteAccount}>Delete Account</button>
+      <button className="inline-block mx-1 my-4 btn btn-warning" onClick={()=>document.getElementById('delete_acct_modal').showModal()}>Delete Account</button>
+      <dialog id="delete_acct_modal" className="modal">
+        <div className="modal-box">
+          <h3 className="font-bold text-lg">Just checking...</h3>
+          <p className="py-4">Are you sure you want to delete your account?</p>
+          <div className="modal-action">
+            <form method="dialog">
+              {/* if there is a button in form, it will close the modal */}
+              <button className="btn btn-primary mx-1">Cancel</button>
+              <button className="btn btn-warning mx-1" onClick={deleteAccount}>I'm Sure!</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
       {(!showAccountEdit) ? (
-        <button className="inline-block mx-1 my-4 btn btn-primary border-2 border-primary" onClick={switchAccountEdit} style={{marginBottom: "30px"}}>Edit Account</button>
+        <button className="inline-block mx-1 my-4 btn btn-primary" onClick={switchAccountEdit} style={{marginBottom: "30px"}}>Edit Account</button>
       ) : (
         <>
-        <button className="inline-block mx-1 my-4 btn btn-primary border-2 border-primary" onClick={switchAccountEdit}>Hide Edit Account</button>
+        <button className="inline-block mx-1 my-4 btn btn-primary" onClick={switchAccountEdit}>Hide Edit Account</button>
         <hr className="w-1/2 mx-auto my-8"></hr>
         <h2 className="text-2xl font-bold">Edit Account Details</h2>
 

@@ -67,10 +67,10 @@ export default function SideCard({ item, bowlName }) {
           {
             showLikeButton ? 
             (
-              <button className="btn btn-primary" onClick={() => {deleteLike()}}>🧡</button>
+              <button className="btn btn-secondary" onClick={() => {deleteLike()}}>🧡</button>
             ) : 
             (
-              <button className="btn btn-primary border-2 border-primary" onClick={() => {(currentUser) ? (createLike()) : (redirect())}}>♡</button>
+              <button className="btn btn-primary" onClick={() => {(currentUser) ? (createLike()) : (redirect())}}>♡</button>
             )
           }
         </div>

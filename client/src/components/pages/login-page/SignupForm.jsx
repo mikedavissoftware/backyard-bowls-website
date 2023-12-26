@@ -71,7 +71,7 @@ export default function SignupForm({ items, formData, handleChange }) {
 
   return (
     <div>
-      <h2 className="font-bold text-white text-2xl">Create Your Account:</h2>
+      <h2 className="font-bold text-white text-2xl">Create Your Account</h2>
 
       {showErrors}
 
@@ -159,7 +159,7 @@ export default function SignupForm({ items, formData, handleChange }) {
 
         <div className="grid my-5 max-w-2xl mx-auto">
           <div>
-            <button type="submit" className="py-2 px-4 rounded-md bg-accent text-white hover:bg-[#7f7] hover:text-black"><span className="drop-shadow-sm-dark">Create Account</span></button>
+            <button type="submit" className="btn btn-primary py-2 px-4">Create Account</button>
           </div>
         </div>
       </form>

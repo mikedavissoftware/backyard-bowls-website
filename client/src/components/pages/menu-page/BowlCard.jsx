@@ -27,6 +27,17 @@ export default function BowlCard({ bowl }) {
   const vegComponents = vegArray.map((veggie, index) => {
     return <li key={index + 1}>{veggie}</li>
   })
+  function vegString(veggiesArray) {
+    let string = ""
+    veggiesArray.forEach((veggie, index) => {
+      string += veggie
+      if (index < (veggiesArray.length - 1)) {
+        string += ", "
+      }
+    })
+    return string
+  }
+  
 
   const redirect = () => {
     setErrors(["Please login to like & rate bowls."])
@@ -74,16 +85,16 @@ export default function BowlCard({ bowl }) {
       <figure className=""><img src={(image) ? (image) : (Placeholder)} className=""/></figure>
       <div className="card-body drop-shadow-dark1">
         <h2 className="card-title justify-center font-bold">{name}</h2>
-        <p>Our <strong>{name}</strong> has our classic <strong>{base}</strong> base with <strong>{protein}</strong> as its protein, and rounding out the ingredients with: <ul><strong>{vegComponents}</strong></ul> Last, but not least, this delicious bowl is finished with a dressing of <strong>{dressing}</strong>. Bon appétit!</p>
+        <p>Our <strong>{name}</strong> has our classic <strong>{base}</strong> base with <strong>{protein}</strong> as its protein, and rounding out the ingredients with: <strong>{vegString(vegArray)}</strong>. Last, but not least, this delicious bowl is finished with a dressing of <strong>{dressing}</strong>. Bon appétit!</p>
         <div className="card-actions justify-end">
           <button className="btn btn-primary" onClick={redirectBowlPage}>More Details</button>
           {
             showLikeButton ? 
             (
-              <button className="btn btn-primary" onClick={() => {deleteLike()}}>🧡</button>
+              <button className="btn btn-secondary" onClick={() => {deleteLike()}}>🧡</button>
             ) : 
             (
-              <button className="btn btn-primary border-2 border-primary" onClick={() => {(currentUser) ? (createLike()) : (redirect())}}>♡</button>
+              <button className="btn btn-primary" onClick={() => {(currentUser) ? (createLike()) : (redirect())}}>♡</button>
             )
           }
         </div>

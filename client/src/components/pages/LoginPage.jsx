@@ -42,9 +42,7 @@ export default function LoginPage() {
           <LoginForm formData={formData} handleChange={handleChange} />
           <p>
             Don't have an account? &nbsp;
-            <button onClick={() => setShowLogin(false)}>
-              Sign Up
-            </button>
+            <button className="inline-block btn btn-secondary ml-4 my-2" onClick={() => setShowLogin(false)}>Sign Up</button>
           </p>
         </>
       ) : (
@@ -52,9 +50,7 @@ export default function LoginPage() {
           <SignupForm items={items} formData={formData} handleChange={handleChange} />
           <p>
             Already have an account?
-            <button onClick={() => setShowLogin(true)}>
-              Log In
-            </button>
+            <button className="inline-block btn btn-secondary ml-4 my-2" onClick={() => setShowLogin(true)}>Back to Login</button>
           </p>
         </>
       )}
