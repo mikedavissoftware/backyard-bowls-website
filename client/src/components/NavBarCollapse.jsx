@@ -3,11 +3,11 @@ import { NavLink } from "react-router-dom"
 
 export default function NavBarCollapse({ currentUser, handleLogoutClick }) {
 
-  function collapseNav() {
-    document.getElementsByClassName("nav-bar-checkbox").forEach((navBar) => {
-      navBar.checked = false
-    })
-  }
+  // function collapseNav() {
+  //   document.getElementsByClassName("nav-bar-checkbox").forEach((navBar) => {
+  //     navBar.checked = false
+  //   })
+  // }
 
   return (
     <div className="collapse md:hidden my-1">
@@ -17,12 +17,12 @@ export default function NavBarCollapse({ currentUser, handleLogoutClick }) {
       </div>
       <div className="collapse-content">
         <ul className="menu bg-base-100 rounded-b-xl">
-          <li><NavLink exact to="/" onClick={collapseNav} className="block">Home</NavLink></li>
-          <li><NavLink to="/menu" onClick={collapseNav} className="block">Menu</NavLink></li>
+          <li><NavLink exact to="/" className="block">Home</NavLink></li>
+          <li><NavLink to="/menu" className="block">Menu</NavLink></li>
           {currentUser ? (
             <>
-              <li><NavLink to="/me" onClick={collapseNav} className="block">My Account</NavLink></li>
-              <li><NavLink to="/logout" onClick={handleLogoutClick} onClick={collapseNav} className="block">Log Out</NavLink></li>
+              <li><NavLink to="/me" className="block">My Account</NavLink></li>
+              <li><NavLink to="/logout" onClick={handleLogoutClick} className="block">Log Out</NavLink></li>
             </>
           ) : (
             <>

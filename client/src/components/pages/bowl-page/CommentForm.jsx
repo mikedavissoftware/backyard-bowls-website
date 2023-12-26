@@ -18,9 +18,9 @@ export default function CommentForm({ itemId, isCurrentUserComment, setIsCurrent
   function numberOptions(max) {        
     const numbersArray = []
     for (let i=0; i<=max; i++) {
-        numbersArray.push(
-            <option value={i}>{i}</option>
-        )
+      numbersArray.push(
+        <option value={i}>{i}</option>
+      )
     }
     return numbersArray
   }
@@ -73,8 +73,8 @@ export default function CommentForm({ itemId, isCurrentUserComment, setIsCurrent
             <label className="label">
               <span className="label-text mx-auto text-black dark:text-white">Rating:</span>
             </label>
-            <select className="select select-bordered w-full max-w-xs mx-auto text-lg" name="rating" onChange={(e) => {handleChange(e)}}>
-              <option value="" disabled selected>How Delicious</option>
+            <select defaultValue="NA" className="select select-bordered w-full max-w-xs mx-auto text-lg" name="rating" onChange={(e) => {handleChange(e)}}>
+              <option value="NA" disabled>How Delicious</option>
               {numberOptions(10)}
             </select>
           </div>
@@ -92,7 +92,7 @@ export default function CommentForm({ itemId, isCurrentUserComment, setIsCurrent
               className="textarea input-bordered w-full max-w-xs mx-auto text-white text-lg"
             />
           </div>
-          <button className="btn btn-primary" type="submit">Submit Your Comment</button>
+          <button className="btn btn-primary my-4" type="submit">Submit Your Comment</button>
         </form>
         </>
       )}

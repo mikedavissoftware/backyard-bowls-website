@@ -43,12 +43,12 @@ export default function Comment({ comment, currentUserComment, setIsCurrentUserC
 
   return (
     <div className="bg-slate-300 rounded-2xl overflow-hidden my-4">
-      <div className="block flex">
-        <div>
-          <img src={comment.user.image} className={`h-48${(showEditForm) ? (" rounded-br-2xl") : ("")}`}></img>
+      <div className="block md:flex">
+        <div className="mt-4 mb-2 md:my-0">
+          <img src={comment.user.image} className={`h-48 rounded-xl md:${(showEditForm) ? ("rounded-br-2xl") : ("")}`}></img>
         </div>
-        <div className="py-2 px-3 text-black text-left">
-          <h3><span className="font-bold">{conditionalAttributes.title} <span className="italic">(favorite: {user.fav_bowl})</span></span></h3>
+        <div className="py-2 px-3 text-black text-center md:text-left">
+          <h3 className="md:text-left"><span className="font-bold">{conditionalAttributes.title} </span><span className="italic">(favorite: {user.fav_bowl})</span></h3>
           <p>Rating: <span className="font-bold">{rating}/10</span></p>
           <p className="italic my-4">"{content}"</p>
           {(currentUserComment[0] && currentUserComment[0].id === comment.id) ? (

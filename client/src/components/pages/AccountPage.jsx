@@ -37,9 +37,9 @@ export default function AccountPage() {
       const otherDietsArray = JSON.parse(dietsObj[0].name).filter((diet) => {
         return diet !== currentUser.diet
       })
-      const userDietOption = <option value={currentUser.diet} selected>{currentUser.diet}</option>
-      const otherDietOptions = otherDietsArray.map((diet) => {
-        return <option value={diet}>{diet}</option>
+      const userDietOption = <option value={currentUser.diet}>{currentUser.diet}</option>
+      const otherDietOptions = otherDietsArray.map((diet, index) => {
+        return <option key={index + 1} value={diet}>{diet}</option>
       })
       setDietOptions([userDietOption, otherDietOptions])
     })
@@ -231,8 +231,7 @@ export default function AccountPage() {
             <label className="label">
               <span className="label-text mx-auto text-black dark:text-white">Change Your Favorite Bowl:</span>
             </label>
-            <select className="select select-bordered w-full max-w-xs mx-auto text-lg" name="favBowl" onChange={handleChange}>
-              <option value={"unspecified"} disabled selected>Select Your Favorite Bowl...</option>
+            <select defaultValue={currentUser.favBowl} className="select select-bordered w-full max-w-xs mx-auto text-lg" name="favBowl" onChange={handleChange}>
               {bowlOptions}
             </select>
           </div>
@@ -241,8 +240,7 @@ export default function AccountPage() {
             <label className="label">
               <span className="label-text mx-auto text-black dark:text-white">Your Diet:</span>
             </label>
-            <select className="select select-bordered w-full max-w-xs mx-auto text-lg" name="diet" onChange={handleChange}>
-              <option value={"unspecified"} disabled selected>Select Your Diet...</option>
+            <select defaultValue={currentUser.diet} className="select select-bordered w-full max-w-xs mx-auto text-lg" name="diet" onChange={handleChange}>
               {dietOptions}
             </select>
           </div>

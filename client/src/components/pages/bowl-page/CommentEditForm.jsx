@@ -42,25 +42,24 @@ export default function CommentEditForm({ comment, setShowEditForm, setIsCurrent
 
   return (
     <div>
-      <form className="mb-8" onSubmit={submitEditComment}>
-        <div className="form-control max-w-2xl mx-auto">
+      <form className="mb-4" onSubmit={submitEditComment}>
+        <div className="form-control max-w-2xl mx-auto mb-1">
           <label className="label">
-            <span className="label-text mx-auto text-black dark:text-white">Rating:</span>
+            <span className="label-text mx-auto text-black">Rating:</span>
           </label>
-          <select className="select select-bordered w-full max-w-xs mx-auto text-lg" name="rating" onChange={(e) => {handleChange(e)}}>
+          <select defaultValue={comment.rating} className="select select-bordered w-full max-w-xs mx-auto text-lg" name="rating" onChange={(e) => {handleChange(e)}}>
             {numberOptions(10)}
           </select>
         </div>
 
-        <div className="form-control max-w-2xl mx-auto">
+        <div className="form-control max-w-2xl mx-auto mb-2">
           <label className="label">
-            <span className="label-text mx-auto text-black dark:text-white">Content:</span>
+            <span className="label-text mx-auto text-black">Content:</span>
           </label>
           <textarea
             name="content"
             id="comment-box"
             value={comment.content}
-            placeholder={`Change from "${comment.content}"`}
             onChange={(e) => {handleChange(e)}}
             className="textarea input-bordered w-full max-w-xs mx-auto text-white text-lg"
           />
