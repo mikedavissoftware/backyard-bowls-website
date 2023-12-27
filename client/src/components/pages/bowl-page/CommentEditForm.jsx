@@ -37,7 +37,7 @@ export default function CommentEditForm({ comment, setShowEditForm, setIsCurrent
     })
 
     setShowEditForm(false)
-    // setIsCurrentUserComment(false)
+    setIsCurrentUserComment(false)
   }
 
   return (
@@ -47,7 +47,7 @@ export default function CommentEditForm({ comment, setShowEditForm, setIsCurrent
           <label className="label">
             <span className="label-text mx-auto text-black">Rating:</span>
           </label>
-          <select defaultValue={comment.rating} className="select select-bordered w-full max-w-xs mx-auto text-lg" name="rating" onChange={(e) => {handleChange(e)}}>
+          <select defaultValue={formData.rating} className="select select-bordered w-full max-w-xs mx-auto text-lg" name="rating" onChange={(e) => {handleChange(e)}}>
             {numberOptions(10)}
           </select>
         </div>
@@ -59,7 +59,7 @@ export default function CommentEditForm({ comment, setShowEditForm, setIsCurrent
           <textarea
             name="content"
             id="comment-box"
-            value={comment.content}
+            value={formData.content}
             onChange={(e) => {handleChange(e)}}
             className="textarea input-bordered w-full max-w-xs mx-auto text-white text-lg"
           />

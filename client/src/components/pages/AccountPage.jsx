@@ -159,12 +159,11 @@ export default function AccountPage() {
 
       <button className="inline-block mx-1 my-4 btn btn-warning" onClick={()=>document.getElementById('delete_acct_modal').showModal()}>Delete Account</button>
       <dialog id="delete_acct_modal" className="modal">
-        <div className="modal-box">
+        <div className="modal-box py-8">
           <h3 className="font-bold text-lg">Just checking...</h3>
           <p className="py-4">Are you sure you want to delete your account?</p>
           <div className="modal-action">
             <form method="dialog">
-              {/* if there is a button in form, it will close the modal */}
               <button className="btn btn-primary mx-1">Cancel</button>
               <button className="btn btn-warning mx-1" onClick={deleteAccount}>I'm Sure!</button>
             </form>

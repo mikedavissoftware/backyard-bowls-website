@@ -24,7 +24,7 @@ export default function Footer() {
     <div className="bg-banner bg-center bg-cover bg-white-50 bg-opacity-50">
       <div className="bg-slate-800 bg-opacity-80 p-3">
         <NavBarRegular currentUser={currentUser} handleLogoutClick={handleLogoutClick} />
-        <NavBarCollapse currentUser={currentUser} handleLogoutClick={handleLogoutClick} />
+        <NavBarCollapse currentUser={currentUser} handleLogoutClick={handleLogoutClick} location={"footer"} />
         <img src={HeaderLogo} alt="Backyard Bowls Logo" className="drop-shadow-dark stroke-black p-3 mx-auto" style={{width: "95%", maxWidth: "400px"}}/>
       </div>
     </div>
