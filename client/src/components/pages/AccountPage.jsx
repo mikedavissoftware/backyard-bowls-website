@@ -60,8 +60,8 @@ export default function AccountPage() {
   }
   const [formData, setFormData] = useState((currentUser) ? ({
     username: currentUser.username,
-    password: "",
-    passwordConfirmation: "",
+    password: currentUser.password,
+    passwordConfirmation: currentUser.passwordConfirmation,
     image: currentUser.image,
     favBowl: currentUser.fav_bowl,
     diet: currentUser.diet
@@ -86,7 +86,7 @@ export default function AccountPage() {
       diet: formData.diet
     };
 
-    fetch("/api/me", {
+    fetch(`/api/me`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
