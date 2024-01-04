@@ -50,7 +50,7 @@ export default function LoginForm({ formData, handleChange }) {
         
         <div className="form-control max-w-2xl mx-auto mb-1d">
           <label className="label">
-            <span className="label-text mx-auto text-black dark:text-white">Username:</span>
+            <span className="label-text mx-auto">Username:</span>
           </label>
           <input
             id="username"
@@ -65,7 +65,7 @@ export default function LoginForm({ formData, handleChange }) {
 
         <div className="form-control max-w-2xl mx-auto">
           <label className="label">
-            <span className="label-text mx-auto text-black dark:text-white">Password:</span>
+            <span className="label-text mx-auto">Password:</span>
           </label>
           <input
             id="password"

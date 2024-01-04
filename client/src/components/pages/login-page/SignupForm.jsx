@@ -79,7 +79,7 @@ export default function SignupForm({ items, formData, handleChange }) {
         
         <div className="form-control max-w-2xl mx-auto">
           <label className="label">
-            <span className="label-text mx-auto text-black dark:text-white">Username:</span>
+            <span className="label-text mx-auto">Username:</span>
           </label>
           <input
             id="username"
@@ -94,7 +94,7 @@ export default function SignupForm({ items, formData, handleChange }) {
 
         <div className="form-control max-w-2xl mx-auto">
           <label className="label">
-            <span className="label-text mx-auto text-black dark:text-white">Password:</span>
+            <span className="label-text mx-auto">Password:</span>
           </label>
           <input
             id="password"
@@ -109,7 +109,7 @@ export default function SignupForm({ items, formData, handleChange }) {
 
         <div className="form-control max-w-2xl mx-auto">
           <label className="label">
-            <span className="label-text mx-auto text-black dark:text-white">Confirm Password:</span>
+            <span className="label-text mx-auto">Confirm Password:</span>
           </label>
           <input
             id="password-confirmation"
@@ -124,7 +124,7 @@ export default function SignupForm({ items, formData, handleChange }) {
 
         <div className="form-control max-w-2xl mx-auto">
           <label className="label">
-            <span className="label-text mx-auto text-black dark:text-white">Profile Picture:</span>
+            <span className="label-text mx-auto">Profile Picture:</span>
           </label>
           <input
             id="image"
@@ -139,7 +139,7 @@ export default function SignupForm({ items, formData, handleChange }) {
 
         <div className="form-control max-w-2xl mx-auto">
           <label className="label">
-            <span className="label-text mx-auto text-black dark:text-white">Your Favorite Bowl:</span>
+            <span className="label-text mx-auto">Your Favorite Bowl:</span>
           </label>
           <select className="select select-bordered w-full max-w-xs mx-auto" name="favBowl" onChange={handleChange}>
             <option value={"unspecified"} disabled selected>Select Your Favorite Bowl...</option>
@@ -149,7 +149,7 @@ export default function SignupForm({ items, formData, handleChange }) {
 
         <div className="form-control max-w-2xl mx-auto">
           <label className="label">
-            <span className="label-text mx-auto text-black dark:text-white">Your Diet:</span>
+            <span className="label-text mx-auto">Your Diet:</span>
           </label>
           <select className="select select-bordered w-full max-w-xs mx-auto" name="diet" onChange={handleChange}>
             <option value={"unspecified"} disabled selected>Select Your Diet...</option>
