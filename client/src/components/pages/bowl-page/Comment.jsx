@@ -45,7 +45,7 @@ export default function Comment({ comment, currentUserComment, setIsCurrentUserC
     <div className="bg-slate-300 rounded-2xl overflow-hidden my-4">
       <div className="block md:flex">
         <div className="mt-4 mb-2 md:my-0">
-          <img src={comment.user.image} className={`h-48 rounded-xl md:${(showEditForm) ? ("rounded-br-2xl") : ("")}`}></img>
+          <img src={comment.user.image} className={`h-48 rounded-xl ${(showEditForm) ? ("md:rounded-br-2xl md:rounded-tr-none md:rounded-tl-none md:rounded-bl-none") : ("md:rounded-none")}`}></img>
         </div>
         <div className="py-2 px-3 text-black text-center md:text-left">
           <h3 className="md:text-left"><span className="font-bold">{conditionalAttributes.title} </span><span className="italic">(favorite: {user.fav_bowl})</span></h3>

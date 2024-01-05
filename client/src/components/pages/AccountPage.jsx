@@ -7,14 +7,26 @@ export default function AccountPage() {
 
   const { currentUser, setCurrentUser, history, errors, setErrors } = useContext(GlobalContext)
 
+  // console.log(currentUser)
+
   const [bowlOptions, setBowlOptions] = useState([])
   const [dietOptions, setDietOptions] = useState([])
+  const [formData, setFormData] = useState({})
 
   const redirect = () => {
     history.push('/');
   }
 
   useEffect(() => {
+    (currentUser) ? (setFormData({
+      username: currentUser.username,
+      password: currentUser.password,
+      passwordConfirmation: currentUser.passwordConfirmation,
+      image: currentUser.image,
+      favBowl: currentUser.fav_bowl,
+      diet: currentUser.diet
+    })) : (null)
+
     fetch("/api/items")
     .then(r => r.json())
     .then(items => {
@@ -50,22 +62,7 @@ export default function AccountPage() {
     setShowAccountEdit(!showAccountEdit)
   }
 
-  const newForm = {
-    username:'',
-    password:'',
-    passwordConfirmation:'',
-    image:'',
-    favBowl:'',
-    diet:''
-  }
-  const [formData, setFormData] = useState((currentUser) ? ({
-    username: currentUser.username,
-    password: currentUser.password,
-    passwordConfirmation: currentUser.passwordConfirmation,
-    image: currentUser.image,
-    favBowl: currentUser.fav_bowl,
-    diet: currentUser.diet
-  }) : (newForm))
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -134,7 +131,7 @@ export default function AccountPage() {
     null
   )
 
-  if (!currentUser) return <span className="loading loading-bars loading-lg"></span>
+  if (!currentUser) return <span className="loading loading-bars loading-lg" style={{margin: "10rem"}}></span>
 
   return (
     <div className="my-8">
