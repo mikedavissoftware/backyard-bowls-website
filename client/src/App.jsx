@@ -3,6 +3,7 @@ import { Route, Switch, useHistory } from "react-router-dom";
 import { useEffect, useState, createContext } from "react"
 import './App.css';
 
+import FloatingAvatar from "./components/FloatingAvatar";
 import Header from './components/Header'
 import Menu from './components/pages/MenuPage'
 import LoginPage from './components/pages/LoginPage'
@@ -34,6 +35,14 @@ export default function App() {
   return (
     <div className="App">
     <GlobalContext.Provider value={{ currentUser, setCurrentUser, history, errors, setErrors }}>
+
+      {currentUser ? (
+        <FloatingAvatar currentUser={currentUser} />
+      ) : (
+        null
+      )}
+      
+
       <Header />
       
       <Switch>

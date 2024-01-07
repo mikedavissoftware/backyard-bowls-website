@@ -155,9 +155,9 @@ puts "🌱 Seeding users..."
   )
 end
 User.create(
-  username: "test",
+  username: "Tom",
   password: "123",
-  image: Faker::Avatar.image,
+  image: "https://i.insider.com/4efd9b8b69bedd682c000022?width=750&format=jpeg&auto=webp",
   fav_bowl: bowl_names[rand(0..(bowl_names.length-1))],
   diet: diets[rand(0..(diets.length-1))]
 )
