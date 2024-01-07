@@ -6,14 +6,22 @@ Like.destroy_all
 Comment.destroy_all
 
 
-# RAW VARIABLES
-diets = [
-  "Regular",
-  "Pescatarian",
-  "Vegetarian",
-  "Vegan",
-  "Keto"
-]
+# DIETS
+Diet.create(
+  diet: "Regular"
+)
+Diet.create(
+  diet: "Pescatarian"
+)
+Diet.create(
+  diet: "Vegetarian"
+)
+Diet.create(
+  diet: "Vegan"
+)
+Diet.create(
+  diet: "Keto"
+)
 
 # ITEMS
 puts "🌱 Seeding items..."
@@ -127,16 +135,6 @@ puts "🌱 Seeding items..."
     dressing: "",
     price: 3
   )
-  Item.create(
-    name: diets,
-    category: "Diets",
-    image: "",
-    base: "",
-    protein: "",
-    veggies: "",
-    dressing: "",
-    price: 0
-  )
 # end
 # items_create
 
@@ -151,7 +149,7 @@ puts "🌱 Seeding users..."
     password: "123",
     image: Faker::Avatar.image,
     fav_bowl: bowl_names[rand(0..(bowl_names.length-1))],
-    diet: diets[rand(0..(diets.length-1))]
+    diet: Diet.all[rand(0..(Diet.all.length-1))]
   )
 end
 User.create(
@@ -159,7 +157,7 @@ User.create(
   password: "123",
   image: "https://i.insider.com/4efd9b8b69bedd682c000022?width=750&format=jpeg&auto=webp",
   fav_bowl: bowl_names[rand(0..(bowl_names.length-1))],
-  diet: diets[rand(0..(diets.length-1))]
+  diet: Diet.all[rand(0..(Diet.all.length-1))]
 )
 
 

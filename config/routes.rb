@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :likes
   resources :comments
   resources :items
+  resources :diets
 
   root 'application#hello_world'
 

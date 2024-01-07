@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_01_053139) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_07_070027) do
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.integer "rating"
@@ -20,6 +20,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_01_053139) do
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_comments_on_item_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "diets", force: :cascade do |t|
+    t.string "diet"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "items", force: :cascade do |t|
@@ -49,13 +55,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_01_053139) do
     t.string "password_digest"
     t.string "image"
     t.string "fav_bowl"
-    t.string "diet"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "diet_id", null: false
+    t.index ["diet_id"], name: "index_users_on_diet_id"
   end
 
   add_foreign_key "comments", "items"
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "items"
   add_foreign_key "likes", "users"
+  add_foreign_key "users", "diets"
 end
