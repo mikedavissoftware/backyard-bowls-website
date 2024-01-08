@@ -24,36 +24,36 @@ export default function AccountPage() {
       passwordConfirmation: currentUser.passwordConfirmation,
       image: currentUser.image,
       favBowl: currentUser.fav_bowl,
-      diet: currentUser.diet
+      dietID: currentUser.diet.id
     })) : (null)
 
-    fetch("/api/items")
-    .then(r => r.json())
-    .then(items => {
-      const otherNameValues = items.filter((item) => {
-        return item.category === "Bowl"
-      }).map(bowl => {
-        return bowl.name
-      }).filter(bowlName => {
-        return bowlName !== currentUser.fav_bowl
-      })
-      const userFavOption = <option key={1} value={currentUser.fav_bowl}>{currentUser.fav_bowl}</option>
-      const otherBowlOptions = otherNameValues.map((nameValue, index) => {
-        return <option key={index + 2} value={nameValue}>{nameValue}</option>
-      })
-      setBowlOptions([userFavOption, ...otherBowlOptions])
+    Promise.all([
+      fetch("/api/items").then(r => r.json()),
+      fetch("/api/diets").then(r => r.json())
+    ])
+    .then(data => {
+      const items = data[0]
+      const diets = data[1]
 
-      const dietsObj = items.filter((item) => {
-        return item.category === "Diets"
+      const bowls = items.filter((item) => {
+        return item.category === "Bowl"
       })
-      const otherDietsArray = JSON.parse(dietsObj[0].name).filter((diet) => {
-        return diet !== currentUser.diet
+      const bowlNames = bowls.map((bowl) => {
+        return bowl.name
       })
-      const userDietOption = <option key={1} value={currentUser.diet}>{currentUser.diet}</option>
-      const otherDietOptions = otherDietsArray.map((diet, index) => {
-        return <option key={index + 2} value={diet}>{diet}</option>
-      })
-      setDietOptions([userDietOption, ...otherDietOptions])
+      setBowlOptions(
+        bowlNames.map((bowlName, index) => {
+          return <option key={index + 1} value={bowlName}>{bowlName}</option>
+        }) 
+      )
+
+      console.log(diets)
+
+      setDietOptions(
+        diets.map((diet) => {
+          return <option key={diet.id} value={diet.id}>{diet.diet}</option>
+        })
+      )
     })
   }, [currentUser])
 
@@ -61,8 +61,6 @@ export default function AccountPage() {
   function switchAccountEdit() {
     setShowAccountEdit(!showAccountEdit)
   }
-
-  
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -80,7 +78,7 @@ export default function AccountPage() {
       password_confirmation: formData.passwordConfirmation,
       image: formData.image,
       fav_bowl: formData.favBowl,
-      diet: formData.diet
+      diet_id: Number(formData.dietID)
     };
 
     fetch(`/api/me`, {
@@ -101,7 +99,7 @@ export default function AccountPage() {
             passwordConfirmation: "",
             image: editedAccount.image,
             favBowl: editedAccount.fav_bowl,
-            diet: editedAccount.diet
+            dietID: editedAccount.diet.id
           })
           console.log(currentUser)
           console.log(formData)
@@ -151,7 +149,7 @@ export default function AccountPage() {
       <div className="text-slate-600 bg-slate-300 px-4 py-2 rounded-md w-fit mx-auto my-7">
         <h3 className="text-xl"><strong>Username: </strong>{currentUser.username}</h3>
         <h3 className="text-xl"><strong>Favorite Bowl: </strong>{currentUser.fav_bowl}</h3>
-        <h3 className="text-xl"><strong>Diet: </strong>{currentUser.diet}</h3>
+        <h3 className="text-xl"><strong>Diet: </strong>{currentUser.diet.diet}</h3>
       </div>
 
       <button className="inline-block mx-1 my-4 btn btn-warning" onClick={()=>document.getElementById('delete_acct_modal').showModal()}>Delete Account</button>
@@ -240,7 +238,7 @@ export default function AccountPage() {
             <label className="label">
               <span className="label-text mx-auto text-black dark:text-white">Change Your Favorite Bowl:</span>
             </label>
-            <select defaultValue={currentUser.favBowl} className="select select-bordered w-full max-w-xs mx-auto text-lg" name="favBowl" onChange={handleChange}>
+            <select defaultValue={currentUser.fav_bowl} className="select select-bordered w-full max-w-xs mx-auto text-lg" name="favBowl" onChange={handleChange}>
               {bowlOptions}
             </select>
           </div>
@@ -249,7 +247,7 @@ export default function AccountPage() {
             <label className="label">
               <span className="label-text mx-auto text-black dark:text-white">Your Diet:</span>
             </label>
-            <select defaultValue={currentUser.diet} className="select select-bordered w-full max-w-xs mx-auto text-lg" name="diet" onChange={handleChange}>
+            <select defaultValue={currentUser.diet.id.toString()} className="select select-bordered w-full max-w-xs mx-auto text-lg" name="dietID" onChange={handleChange}>
               {dietOptions}
             </select>
           </div>

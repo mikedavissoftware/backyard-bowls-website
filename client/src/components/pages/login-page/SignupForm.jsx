@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from "react"
 import { GlobalContext } from "../../../App"
 
 
-export default function SignupForm({ items, formData, handleChange }) {
+export default function SignupForm({ items, diets, formData, handleChange }) {
 
   const { currentUser, setCurrentUser, history, errors, setErrors } = useContext(GlobalContext)
 
@@ -11,21 +11,18 @@ export default function SignupForm({ items, formData, handleChange }) {
     history.push('/me');
   }
 
-  const bowls = items.filter(item => {
+  const bowls = items.filter((item) => {
     return item.category === "Bowl"
   })
-  const bowlNames = bowls.map(bowl => {
+  const bowlNames = bowls.map((bowl) => {
     return bowl.name
   })
-  const bowlOptions = bowlNames.map(name => {
-    return <option value={name}>{name}</option>
+  const bowlOptions = bowlNames.map((bowlName, index) => {
+    return <option key={index + 1} value={bowlName}>{bowlName}</option>
   })
 
-  const dietArray = JSON.parse(items.find((item) => {
-    return item.category === "Diets"
-  }).name)
-  const dietOptions = dietArray.map(diet => {
-    return <option value={diet}>{diet}</option>
+  const dietOptions = diets.map((diet) => {
+    return <option key={diet.id} value={diet.id}>{diet.diet}</option>
   })
 
   function handleSubmit(e) {
@@ -37,7 +34,7 @@ export default function SignupForm({ items, formData, handleChange }) {
       password_confirmation: formData.passwordConfirmation,
       image: formData.image,
       fav_bowl: formData.favBowl,
-      diet: formData.diet
+      diet_id: Number(formData.dietID)
     }
 
     fetch("/api/signup", {
@@ -50,13 +47,15 @@ export default function SignupForm({ items, formData, handleChange }) {
       if (r.ok) {
         r.json().then((user) => setCurrentUser(user));
         setErrors([])
+        redirect()
       } else {
-        r.json().then((err) => setErrors(err.errors));
+        r.json().then((err) => {
+          setErrors(err.errors)
+          console.log(err.errors)
+        });
       }
     });
     console.log(currentUser)
-
-    redirect()
   }
 
   const showErrors = (errors) ? (
@@ -141,8 +140,8 @@ export default function SignupForm({ items, formData, handleChange }) {
           <label className="label">
             <span className="label-text mx-auto">Your Favorite Bowl:</span>
           </label>
-          <select className="select select-bordered w-full max-w-xs mx-auto" name="favBowl" onChange={handleChange}>
-            <option value={"unspecified"} disabled selected>Select Your Favorite Bowl...</option>
+          <select className="select select-bordered w-full max-w-xs mx-auto" name="favBowl" defaultValue={"unspecified"} onChange={handleChange}>
+            <option value="unspecified" disabled>Select Your Favorite Bowl...</option>
             {bowlOptions}
           </select>
         </div>
@@ -151,8 +150,8 @@ export default function SignupForm({ items, formData, handleChange }) {
           <label className="label">
             <span className="label-text mx-auto">Your Diet:</span>
           </label>
-          <select className="select select-bordered w-full max-w-xs mx-auto" name="diet" onChange={handleChange}>
-            <option value={"unspecified"} disabled selected>Select Your Diet...</option>
+          <select className="select select-bordered w-full max-w-xs mx-auto" name="dietID" defaultValue={"unspecified"} onChange={handleChange}>
+            <option value="unspecified" disabled>Select Your Diet...</option>
             {dietOptions}
           </select>
         </div>

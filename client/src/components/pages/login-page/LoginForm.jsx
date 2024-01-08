@@ -25,7 +25,10 @@ export default function LoginForm({ formData, handleChange }) {
         setErrors([])
         redirect()
       } else {
-        r.json().then((err) => setErrors(err.errors));
+        r.json().then((err) => {
+          setErrors(err.errors)
+          console.log(err.errors)
+        });
       }
     });
   }
