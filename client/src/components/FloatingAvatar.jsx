@@ -7,7 +7,7 @@ export default function FloatingAvatar({ currentUser }) {
 
 
   return (
-    <div className="fixed flex w-full place-content-end z-20">
+    <div className="fixed right-0 top-0 z-20">
       <div className="avatar online m-3 md:m-4 drop-shadow-dark3">
         <div className="w-10 rounded-full object-right border-2 bg-white">
           <NavLink to="/me">
