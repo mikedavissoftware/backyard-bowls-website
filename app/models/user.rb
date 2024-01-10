@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   belongs_to :diet
 
-  validates_presence_of :username, :diet_id
+  validates_presence_of :username
   validates_uniqueness_of :username
   # validates :password, length: in: {8..20}
 end
