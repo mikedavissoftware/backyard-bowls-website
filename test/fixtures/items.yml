@@ -1,0 +1,65 @@
+item1:
+  id: 1
+  name: bowl1
+  category: bowl
+  image: https://www.ikea.com/us/en/images/products/blanda-matt-serving-bowl-bamboo__0711988_pe728640_s5.jpg
+  base: grain mix
+  protein: seitan
+  veggies: [veggie1, veggie2, veggie3]
+  dressing: dressing1
+  price: 10
+
+item2:
+  id: 2
+  name: bowl2
+  category: bowl
+  image: https://www.ikea.com/us/en/images/products/blanda-matt-serving-bowl-bamboo__0711988_pe728640_s5.jpg
+  base: grain mix
+  protein: tofu
+  veggies: [veggie4, veggie5, veggie6]
+  dressing: dressing2
+  price: 12
+
+item3:
+  id: 3
+  name: side1
+  category: side
+  image: https://images2.minutemediacdn.com/image/upload/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/shape/cover/sport/istock-000025900843-small-d0dc7a00e9d420b13d1233cac0dd161e.jpg
+  base: NULL
+  protein: NULL
+  veggies: NULL
+  dressing: NULL
+  price: 4
+
+item4:
+  id: 4
+  name: side2
+  category: side
+  image: https://images2.minutemediacdn.com/image/upload/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/shape/cover/sport/istock-000025900843-small-d0dc7a00e9d420b13d1233cac0dd161e.jpg
+  base: NULL
+  protein: NULL
+  veggies: NULL
+  dressing: NULL
+  price: 6
+
+item5:
+  id: 5
+  name: drink1
+  category: drink
+  image: https://cdn.biomes.world/wp-content/uploads/2019/07/Depositphotos_317632090_xl-2015-scaled-1440x960.jpg
+  base: NULL
+  protein: NULL
+  veggies: NULL
+  dressing: NULL
+  price: 3
+
+item6:
+  id: 6
+  name: drink2
+  category: drink
+  image: https://cdn.biomes.world/wp-content/uploads/2019/07/Depositphotos_317632090_xl-2015-scaled-1440x960.jpg
+  base: NULL
+  protein: NULL
+  veggies: NULL
+  dressing: NULL
+  price: 4

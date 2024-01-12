@@ -4,6 +4,6 @@ class Item < ApplicationRecord
   has_many :users, through: :likes
   has_many :users, through: :comments
 
-  validates_presence_of :name, :category
+  validates_presence_of :name, :category, :image, :base, :protein, :veggies, :dressing, :price
 
 end
