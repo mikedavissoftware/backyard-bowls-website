@@ -1,0 +1,19 @@
+regular:
+  id: 1
+  diet: Regular
+
+pescatarian:
+  id: 2
+  diet: Pescatarian
+
+vegetarian:
+  id: 3
+  diet: Vegetarian
+
+vegan:
+  id: 4
+  diet: Vegan
+
+keko:
+  id: 5
+  diet: Keto

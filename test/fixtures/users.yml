@@ -1,0 +1,31 @@
+frodo:
+  id: 1
+  username: frodo
+  password_digest: <%= BCrypt::Password.create("foobar", cost: 4) %>
+  image: https://static1.personality-database.com/profile_images/b4bc82adf5e44268a07ef2cfc16f3785.png
+  fav_bowl: Bowl 1
+  diet_id: 1
+
+samwise:
+  id: 2
+  username: sam
+  password_digest: <%= BCrypt::Password.create("foobar", cost: 4) %>
+  image: https://pbs.twimg.com/profile_images/1293547410/Sampic2_400x400.jpeg
+  fav_bowl: Bowl 2
+  diet_id: 2
+
+meriadoc:
+  id: 3
+  username: merry
+  password_digest: <%= BCrypt::Password.create("foobar", cost: 4) %>
+  image: https://static.wikia.nocookie.net/middlearthfilmsaga/images/8/8e/Merry_ROTK_1.jpg/revision/latest?cb=20180917131316
+  fav_bowl: Bowl 3
+  diet_id: 3
+
+peregrin:
+  id: 4
+  username: pippin
+  password_digest: <%= BCrypt::Password.create("foobar", cost: 4) %>
+  image: https://149455152.v2.pressablecdn.com/wp-content/uploads/2018/03/pippinfeature.jpg
+  fav_bowl: Bowl 4
+  diet_id: 4

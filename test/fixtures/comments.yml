@@ -1,0 +1,27 @@
+comment1:
+  id: 1
+  content: This bowl is good. I feel it is reasonably priced.
+  rating: 6
+  user_id: 1
+  item_id: 1
+
+comment2:
+  id: 2
+  content: This bowl isn't horrible, but I wouldn't write home about it. It should be priced lower.
+  rating: 4
+  user_id: 2
+  item_id: 2
+
+comment3:
+  id: 3
+  content: This bowl is amazing! Shut up and take all my money!!
+  rating: 10
+  user_id: 3
+  item_id: 1
+
+comment4:
+  id: 4
+  content: This bowl is horrible! I want my money back, and then some!!
+  rating: 1
+  user_id: 4
+  item_id: 2
