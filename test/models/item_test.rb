@@ -18,7 +18,7 @@ class ItemTest < ActiveSupport::TestCase
         "Pepitas"
       ],
       dressing: "Sriracha Cashew Vinaigrette",
-      price: 0
+      price: 5
     )
   end
 
@@ -37,9 +37,13 @@ class ItemTest < ActiveSupport::TestCase
   end
 
   test "image should be present" do
-    p @item.image
     @item.image = ""
     assert_not @item.valid?, "item image should be present"
+  end
+
+  test "image address should be web address" do
+    @item.image = "www.image.com"
+    assert_not @item.valid?, "item address must start with http:// or https://"
   end
 
   test "base should be present" do
@@ -65,6 +69,16 @@ class ItemTest < ActiveSupport::TestCase
   test "price should be present" do
     @item.price = ""
     assert_not @item.valid?, "item price should be present"
+  end
+
+  test "price should be a number" do
+    @item.price = "not a number"
+    assert_not @item.valid?, "price should be numerical"
+  end
+
+  test "price should be greater than 0" do
+    @item.price = 0
+    assert_not @item.valid?, "price should be > 0"
   end
 
   test "item_count_seven" do
