@@ -16,8 +16,30 @@ class UserTest < ActiveSupport::TestCase
     assert @user.valid?
   end
 
-  test "name should be present" do
-    @user.username = "     "
+  test "username should be present" do
+    @user.username = ""
     assert_not @user.valid?
   end
+
+  test "username should be unique" do
+    @user.username = "frodo"
+    assert_not @user.valid?
+  end
+
+  test "password should be present" do
+    @user.password = @user.password_confirmation = " " * 6
+    assert_not @user.valid?
+  end
+
+  test "password should be 6 characters or longer" do
+    @user.password = @user.password_confirmation = "x" * 3
+    p @user.password
+    assert_not @user.valid?
+  end
+
+  test "password should be 20 characters or shorter" do
+    @user.password = @user.password_confirmation = "x" * 21
+    assert_not @user.valid?
+  end
+
 end 
