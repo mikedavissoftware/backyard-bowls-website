@@ -20,6 +20,9 @@ class ItemTest < ActiveSupport::TestCase
       dressing: "Sriracha Cashew Vinaigrette",
       price: 5
     )
+
+    create_comment(@item.id, 1)
+    create_like(@item.id, 1)
   end
 
   test "should be valid" do
@@ -44,6 +47,12 @@ class ItemTest < ActiveSupport::TestCase
   test "image address should be web address" do
     @item.image = "www.image.com"
     assert_not @item.valid?, "item address must start with http:// or https://"
+
+    @item.image = "http://..."
+    assert @item.valid?, "should pass if starting with http://"
+    
+    @item.image = "https://..."
+    assert @item.valid?, "should pass if starting with https://"
   end
 
   test "base should be present" do
@@ -81,8 +90,36 @@ class ItemTest < ActiveSupport::TestCase
     assert_not @item.valid?, "price should be > 0"
   end
 
-  test "item_count_seven" do
+  test "item count accurate" do
     assert_equal 7, Item.count, "not equal to expected number of 7 items"
   end
+
+  test "item is destroyed" do
+    item_id = @item.id
+    @item.destroy
+    assert_not Item.exists?(id: item_id)
+  end
   
+  test "dependent comment is destroyed" do
+    comment_id = @comment.id
+    assert Comment.exists?(id: comment_id)
+    @item.destroy
+    assert_not Comment.exists?(id: comment_id)
+  end
+
+  test "dependent like is destroyed" do
+    like_id = @like.id
+    assert Like.exists?(id: like_id)
+    @item.destroy
+    assert_not Like.exists?(id: like_id)
+  end
+
+  test "has item through comment" do
+    assert Item.exists?(id: @comment.item.id)
+  end
+
+  test "has item through like" do
+    assert Item.exists?(id: @like.item.id)
+  end
+
 end 

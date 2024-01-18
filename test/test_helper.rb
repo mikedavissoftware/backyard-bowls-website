@@ -11,4 +11,20 @@ class ActiveSupport::TestCase
  
   # Add more helper methods to be used by all tests here...
 
+  def create_comment(item_id = 1, user_id = 1)
+    @comment = Comment.create(
+      content: "This here is what they call a test comment.",
+      rating: 5,
+      item_id: item_id,
+      user_id: user_id
+    )
+  end
+
+  def create_like(item_id = 1, user_id = 1)
+    @like = Like.create(
+      item_id: item_id,
+      user_id: user_id
+    )
+  end
+
 end
