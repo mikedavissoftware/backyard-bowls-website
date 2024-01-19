@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  resources :users
-  resources :likes
   resources :comments
-  resources :items
-  resources :diets
+  resources :diets, only: [:index, :show]
+  resources :items, only: [:index, :show]
+  resources :likes, only: [:index, :show, :create, :destroy]
+  resources :users
 
   root 'application#hello_world'
 
