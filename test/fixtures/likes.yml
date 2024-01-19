@@ -1,0 +1,9 @@
+like1:
+  id: 1
+  user_id: 1
+  item_id: 1
+
+like2:
+  id: 3
+  user_id: 3
+  item_id: 1
