@@ -146,17 +146,17 @@ puts "🌱 Seeding users..."
 10.times do
   User.create(
     username: Faker::Name.name,
-    password: "123",
+    password: "123456",
     image: Faker::Avatar.image,
-    fav_bowl: bowl_names[rand(0..(bowl_names.length-1))],
+    fav_bowl: bowl_names[rand(0..(bowl_names.length-1)).to_i],
     diet: Diet.all[rand(0..(Diet.all.length-1))]
   )
 end
 User.create(
   username: "Tom",
-  password: "123",
+  password: "123456",
   image: "https://i.insider.com/4efd9b8b69bedd682c000022?width=750&format=jpeg&auto=webp",
-  fav_bowl: bowl_names[rand(0..(bowl_names.length-1))],
+  fav_bowl: bowl_names[rand(0..(bowl_names.length-1)).to_i],
   diet: Diet.all[rand(0..(Diet.all.length-1))]
 )
 

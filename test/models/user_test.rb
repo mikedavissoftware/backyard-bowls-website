@@ -1,19 +1,17 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
+  
   def setup
-    @user = User.create(
-      username: "aragorn",
-      password: "foobar", 
-      password_confirmation: "foobar",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7P4nG9YWYqV5l7uZJ3So1jKGMQl8tNoy1XTZZ2IDoDQ&s",
-      fav_bowl: "Bowl 5",
-      diet_id: 5
-    )
+    create_user()
   end
   
   test "should be valid" do
     assert @user.valid?
+  end
+
+  test "user count accurate" do
+    assert_equal 5, User.count, "not equal to expected number of 5 users"
   end
 
   test "username should be present" do
@@ -33,7 +31,6 @@ class UserTest < ActiveSupport::TestCase
 
   test "password should be 6 characters or longer" do
     @user.password = @user.password_confirmation = "x" * 3
-    p @user.password
     assert_not @user.valid?
   end
 

@@ -3,16 +3,15 @@ require 'test_helper'
 class CommentTest < ActiveSupport::TestCase
 
   def setup
-    @comment = Comment.create(
-      content: "I love this bowl!",
-      rating: 9,
-      user_id: 1,
-      item_id: 3
-    )
+    create_comment()
   end
 
   test "should be valid" do
     assert @comment.valid?, "created comment isn't valid"
+  end
+
+  test "comment count accurate" do
+    assert_equal 5, Comment.count, "not equal to expected number of 5 comments"
   end
 
   test "content should be present" do 

@@ -11,19 +11,52 @@ class ActiveSupport::TestCase
  
   # Add more helper methods to be used by all tests here...
 
-  def create_comment(item_id = 1, user_id = 1)
+  def create_comment(item_id = rand(1..Item.all.length), user_id = rand(1..User.all.length))
     @comment = Comment.create(
       content: "This here is what they call a test comment.",
-      rating: 5,
+      rating: rand(0..10),
       item_id: item_id,
       user_id: user_id
     )
   end
 
-  def create_like(item_id = 1, user_id = 1)
+  def create_diet()
+    @diet = Diet.create(
+      diet: "Test Diet"
+    )
+  end
+
+  def create_item()
+    @item = Item.create(
+      name: "Test Item",
+      category: "Bowl",
+      image: "https://testitem.com",
+      base: "Grain Mix",
+      protein: "Tofu",
+      veggies: [
+        "Test Ingredient 1",
+        "Test Ingredient 2",
+        "Test Ingredient 3",
+      ],
+      dressing: "Oil & Vinegar",
+      price: 10
+    )
+  end
+
+  def create_like(item_id = rand(1..Item.all.length), user_id = rand(1..User.all.length))
     @like = Like.create(
       item_id: item_id,
       user_id: user_id
+    )
+  end
+
+  def create_user(diet_id = rand(1..Diet.all.length))
+    @user = User.create(
+      username: "Test User",
+      password: "testpassword",
+      image: "https://testimage.com",
+      fav_bowl: "Test Bowl",
+      diet_id: diet_id
     )
   end
 

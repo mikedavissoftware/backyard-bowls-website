@@ -3,11 +3,19 @@ require 'test_helper'
 class LikeTest < ActiveSupport::TestCase
   
   def setup
-    @like = Like.create(
-      user_id: 2,
-      item_id: 1
-    )
+    create_like()
   end
 
-  test "like is valid"
+  test "should be valid" do
+    assert @like.valid?, "created item isn't valid"
+  end
+
+  test "belongs to an existing user" do
+    assert User.exists?(id: @like.user.id)
+  end
+
+  test "belongs to an existing item" do
+    assert Item.exists?(id: @like.item.id)
+  end
+
 end 

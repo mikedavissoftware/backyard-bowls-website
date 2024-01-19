@@ -3,30 +3,17 @@ require 'test_helper'
 class ItemTest < ActiveSupport::TestCase
 
   def setup
-    @item = Item.create(
-      name: "Spicy Switchback",
-      category: "Bowl",
-      image: "https://www.ikea.com/us/en/images/products/blanda-matt-serving-bowl-bamboo__0711988_pe728640_s5.jpg",
-      base: "Grain Mix",
-      protein: "Marinated Tofu",
-      veggies: [
-        "Corn",
-        "Sweet Bell Peppers",
-        "Cucumbers",
-        "Pickled Vegetables",
-        "Kale",
-        "Pepitas"
-      ],
-      dressing: "Sriracha Cashew Vinaigrette",
-      price: 5
-    )
-
-    create_comment(@item.id, 1)
-    create_like(@item.id, 1)
+    create_item()
+    create_comment(@item.id, )
+    create_like(@item.id, )
   end
 
   test "should be valid" do
     assert @item.valid?, "created item isn't valid"
+  end
+
+  test "item count accurate" do
+    assert_equal 7, Item.count, "not equal to expected number of 7 items"
   end
 
   test "name should be present" do
@@ -88,10 +75,6 @@ class ItemTest < ActiveSupport::TestCase
   test "price should be greater than 0" do
     @item.price = 0
     assert_not @item.valid?, "price should be > 0"
-  end
-
-  test "item count accurate" do
-    assert_equal 7, Item.count, "not equal to expected number of 7 items"
   end
 
   test "item is destroyed" do
