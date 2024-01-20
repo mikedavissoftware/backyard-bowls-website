@@ -26,7 +26,9 @@ class CommentTest < ActiveSupport::TestCase
 
   test "rating should be in range" do
     @comment.rating = 11
-    assert_not @comment.valid?, "comment rating should be in range 0-10"
+    assert_not @comment.valid?, "comment rating should not be greater than 10"
+    @comment.rating = -3
+    assert_not @comment.valid?, "comment rating should not be less than 0"
   end
 
 end 

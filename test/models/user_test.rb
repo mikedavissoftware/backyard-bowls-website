@@ -29,14 +29,11 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
-  test "password should be 6 characters or longer" do
+  test "password should be 6-20 characters long" do
     @user.password = @user.password_confirmation = "x" * 3
-    assert_not @user.valid?
-  end
-
-  test "password should be 20 characters or shorter" do
+    assert_not @user.valid?, "password shouldn't be shorter than 6 characters"
     @user.password = @user.password_confirmation = "x" * 21
-    assert_not @user.valid?
+    assert_not @user.valid?, "password shouldn't be longer than 20 characters"
   end
 
 end 
