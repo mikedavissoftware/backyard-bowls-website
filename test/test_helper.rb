@@ -60,4 +60,12 @@ class ActiveSupport::TestCase
     )
   end
 
+  def login(username = "frodo", password = "foobar")
+    post login_path, params: { 
+      username: username,
+      password: password
+    }
+    assert_response :success
+  end
+
 end
