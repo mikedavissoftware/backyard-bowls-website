@@ -61,7 +61,7 @@ class ActiveSupport::TestCase
   end
 
   def login(username = "frodo", password = "foobar")
-    post login_path, params: { 
+    post "/login", params: { 
       username: username,
       password: password
     }
