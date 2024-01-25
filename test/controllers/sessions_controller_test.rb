@@ -5,7 +5,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
   def setup
     @username = "sam"
     @password = "foobar"
-    login(@username)
+    login(@username, @password)
   end
 
   test "should show current session's user info" do
@@ -14,5 +14,6 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     p object['username']
     assert object['username'] == @username, "username must equal login username"
   end
+
 
 end
