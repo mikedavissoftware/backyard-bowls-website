@@ -7,30 +7,41 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     @other_user = users(:samwise)
   end
 
-  test "should show all users" do
+  test "INDEX should show all users" do
     get users_path
     object = JSON.parse(response.body)
     assert object.length == 4
     assert object[0]["username"] == "frodo"
   end
 
-  test "should show one user" do
+  test "SHOW should show one user" do
     get user_path(@user)
     object = JSON.parse(response.body)
     assert object["username"] == "frodo"
   end
 
-  test "should return scrambled password" do
+  test "SHOW should return scrambled password" do
     get user_path(@user)
     object = JSON.parse(response.body)
     assert_not object["password_digest"] == "foobar"
   end
 
-  test "should create a new user" do
-
+  test "CREATE should create a new user" do
+    username = "new user"
+    post '/signup', params: {
+      username: username,
+      password: "password",
+      password_confirmation: "password",
+      image: "http://image.com",
+      fav_bowl: "My Favorite Bowl",
+      diet_id: 1
+    }
+    assert_response :success
+    object = JSON.parse(response.body)
+    assert object["username"] == username
   end
 
-  test "should edit user if logged in" do
+  test "UPDATE should edit user if logged in" do
     login()
     patch user_path(@user), params: {
       username: "new username",
@@ -44,7 +55,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert object["username"] == "new username"
   end
 
-  test "should not edit user if not logged in" do
+  test "UPDATE should not edit user if not logged in" do
     patch user_path(@user), params: {
       username: "new username",
       password: "foobar",
@@ -54,6 +65,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       diet_id: @user.diet_id
     }
     assert_response :unauthorized
+  end
+
+  test "DESTROY should delete user" do
+    login()
+    delete user_path(@user)
+    assert_response :success
+    assert response.body == ""
   end
 
 end
