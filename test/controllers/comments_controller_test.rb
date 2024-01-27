@@ -46,8 +46,41 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert object["content"] == content
   end
 
-  test "UPDATE should edit comment" do
-
+  test "if logged in, UPDATE should edit comment" do
+    new_content = "This is a NEW test comment"
+    login()
+    patch comment_path(@comment1), params: {
+      content: new_content,
+      rating: 9,
+      user_id: @current_user["id"],
+      item_id: 4
+    }
+    assert_response :success
+    object = JSON.parse(response.body)
+    assert object["content"] == new_content
+    assert object["rating"] == 9
   end
-  
+
+  test "if NOT logged in, UPDATE should NOT edit comment" do
+    new_content = "This is a NEW test comment"
+    patch comment_path(@comment1), params: {
+      content: new_content,
+      rating: 9,
+      user_id: 1,
+      item_id: 4
+    }
+    assert_response 401
+  end
+
+  test "if logged in, DESTROY should delete comment" do
+    login()
+    delete comment_path(@comment1)
+    assert_response :success
+  end
+
+  test "if NOT logged in, DESTROY should NOT delete comment" do
+    delete comment_path(@comment1)
+    assert_response 401
+  end
+
 end
