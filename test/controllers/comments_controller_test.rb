@@ -9,6 +9,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
 
   test "INDEX should show all comments, regardless of login" do
     get comments_path
+    assert_response :success
     object = JSON.parse(response.body)
     assert object.length == 4
     assert object[3]["rating"] == 1

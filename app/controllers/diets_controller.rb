@@ -8,6 +8,13 @@ class DietsController < ApplicationController
 
   def show
     diet = Diet.find(params[:id])
+    render json: diet
+  end
+
+  private
+
+  def diet_params
+    params.permit(:id, :diet)
   end
   
 end
