@@ -55,7 +55,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert object["username"] == "new username"
   end
 
-  test "UPDATE should not edit user if not logged in" do
+  test "UPDATE should NOTE edit user if not logged in" do
     patch user_path(@user), params: {
       username: "new username",
       password: "foobar",
@@ -64,14 +64,19 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       fav_bowl: @user.fav_bowl,
       diet_id: @user.diet_id
     }
-    assert_response :unauthorized
+    assert_response 401
   end
 
-  test "DESTROY should delete user" do
+  test "DESTROY should delete user if logged in" do
     login()
     delete user_path(@user)
     assert_response :success
     assert response.body == ""
+  end
+
+  test "DESTROY should NOT delete user if not logged in" do
+    delete user_path(@user)
+    assert_response 401
   end
 
 end

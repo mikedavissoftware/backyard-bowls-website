@@ -25,118 +25,115 @@ Diet.create(
 
 # ITEMS
 puts "🌱 Seeding items..."
-# def items_create
-  Item.create(
-    name: "Spicy Switchback",
-    category: "Bowl",
-    image: "https://www.ikea.com/us/en/images/products/blanda-matt-serving-bowl-bamboo__0711988_pe728640_s5.jpg",
-    base: "Grain Mix",
-    protein: "Marinated Tofu",
-    veggies: [
-      "Corn", 
-      "Sweet Bell Peppers", 
-      "Cucumbers", "Pickled Vegetables", 
-      "Kale", 
-      "Pepitas"
-    ],
-    dressing: "Sriracha Cashew Vinaigrette",
-    price: 0
-  )
-  Item.create(
-    name: "Backcountry BBQ",
-    category: "Bowl",
-    image: "https://www.ikea.com/us/en/images/products/blanda-matt-serving-bowl-bamboo__0711988_pe728640_s5.jpg",
-    base: "Grain Mix",
-    protein: "Seitan",
-    veggies: [
-      "Roasted Beets", 
-      "Corn", 
-      "Sweet Bell Peppers", 
-      "Pickled Vegetables", 
-      "Kale", 
-      "Pepitas", 
-      "Crispy Onions"
-    ],
-    dressing: "BBQ Sauce",
-    price: 0
-  )
-  Item.create(
-    name: "Hoisin Headwall",
-    category: "Bowl",
-    image: "https://www.ikea.com/us/en/images/products/blanda-matt-serving-bowl-bamboo__0711988_pe728640_s5.jpg",
-    base: "Grain Mix",
-    protein: "Marinated Tofu",
-    veggies: [
-      "Purple Cabbage", 
-      "Sweet Bell Peppers", 
-      "Carrots", 
-      "Cucumbers", 
-      "Kale", 
-      "Toasted Peanuts"
-    ],
-    dressing: "Thai Coconut Vinaigrette",
-    price: 0
-  )
-  Item.create(
-    name: "Alpine Apple",
-    category: "Bowl",
-    image: "https://www.ikea.com/us/en/images/products/blanda-matt-serving-bowl-bamboo__0711988_pe728640_s5.jpg",
-    base: "Grain Mix",
-    protein: "Seared Tempeh",
-    veggies: [
-      "Apples",
-      "Roasted Beets", 
-      "Cucumbers",
-      "Sweet Bell Peppers", 
-      "Cranberries", 
-      "Kale", 
-      "Pepitas"
-    ],
-    dressing: "Apple Cider Vinaigrette",
-    price: 0
-  )
-  Item.create(
-    name: "Boulder Chips",
-    category: "Side",
-    image: "https://assets-global.website-files.com/622a65eb1d2ac4806c863e1c/6271acfb7412c31d3a294b0e_12058_Boulder_Canyon_5.25oz_Classic_Sea_Salt_Avacado_Oil_CC_Kettle_Chip_Bag_Front.webp",
-    base: "",
-    protein: "",
-    veggies: "",
-    dressing: "",
-    price: 2
-  )
-  Item.create(
-    name: "Kombucha",
-    category: "Drink",
-    image: "https://cdn.shopify.com/s/files/1/0281/6383/3891/products/Kombucha-Water---New-Bottle_400x.png?v=1675707059",
-    base: "",
-    protein: "",
-    veggies: "",
-    dressing: "",
-    price: 5
-  )
-  Item.create(
-    name: "Water",
-    category: "Drink",
-    image: "https://broncoburgers.com/wp-content/uploads/2021/07/Bottled-Water.png",
-    base: "",
-    protein: "",
-    veggies: "",
-    dressing: "",
-    price: 3
-  )
-  Item.create(
-    name: "Yerba Mate",
-    category: "Drink",
-    image: "https://images.squarespace-cdn.com/content/v1/59c16a752278e7bd79dd5a12/1569624132573-N1IJDLXBW4PT7UYIJSLN/enlightenmint.png",
-    base: "",
-    protein: "",
-    veggies: "",
-    dressing: "",
-    price: 3
-  )
-# end
-# items_create
+Item.create!(
+  name: "Spicy Switchback",
+  category: "Bowl",
+  image: "https://www.ikea.com/us/en/images/products/blanda-matt-serving-bowl-bamboo__0711988_pe728640_s5.jpg",
+  base: "Grain Mix",
+  protein: "Marinated Tofu",
+  veggies: [
+    "Corn", 
+    "Sweet Bell Peppers", 
+    "Cucumbers", "Pickled Vegetables", 
+    "Kale", 
+    "Pepitas"
+  ],
+  dressing: "Sriracha Cashew Vinaigrette",
+  price: 10
+)
+Item.create(
+  name: "Backcountry BBQ",
+  category: "Bowl",
+  image: "https://www.ikea.com/us/en/images/products/blanda-matt-serving-bowl-bamboo__0711988_pe728640_s5.jpg",
+  base: "Grain Mix",
+  protein: "Seitan",
+  veggies: [
+    "Roasted Beets", 
+    "Corn", 
+    "Sweet Bell Peppers", 
+    "Pickled Vegetables", 
+    "Kale", 
+    "Pepitas", 
+    "Crispy Onions"
+  ],
+  dressing: "BBQ Sauce",
+  price: 10
+)
+Item.create(
+  name: "Hoisin Headwall",
+  category: "Bowl",
+  image: "https://www.ikea.com/us/en/images/products/blanda-matt-serving-bowl-bamboo__0711988_pe728640_s5.jpg",
+  base: "Grain Mix",
+  protein: "Marinated Tofu",
+  veggies: [
+    "Purple Cabbage", 
+    "Sweet Bell Peppers", 
+    "Carrots", 
+    "Cucumbers", 
+    "Kale", 
+    "Toasted Peanuts"
+  ],
+  dressing: "Thai Coconut Vinaigrette",
+  price: 10
+)
+Item.create(
+  name: "Alpine Apple",
+  category: "Bowl",
+  image: "https://www.ikea.com/us/en/images/products/blanda-matt-serving-bowl-bamboo__0711988_pe728640_s5.jpg",
+  base: "Grain Mix",
+  protein: "Seared Tempeh",
+  veggies: [
+    "Apples",
+    "Roasted Beets", 
+    "Cucumbers",
+    "Sweet Bell Peppers", 
+    "Cranberries", 
+    "Kale", 
+    "Pepitas"
+  ],
+  dressing: "Apple Cider Vinaigrette",
+  price: 10
+)
+Item.create(
+  name: "Boulder Chips",
+  category: "Side",
+  image: "https://assets-global.website-files.com/622a65eb1d2ac4806c863e1c/6271acfb7412c31d3a294b0e_12058_Boulder_Canyon_5.25oz_Classic_Sea_Salt_Avacado_Oil_CC_Kettle_Chip_Bag_Front.webp",
+  base: "",
+  protein: "",
+  veggies: "",
+  dressing: "",
+  price: 2
+)
+Item.create(
+  name: "Kombucha",
+  category: "Drink",
+  image: "https://cdn.shopify.com/s/files/1/0281/6383/3891/products/Kombucha-Water---New-Bottle_400x.png?v=1675707059",
+  base: "",
+  protein: "",
+  veggies: "",
+  dressing: "",
+  price: 5
+)
+Item.create(
+  name: "Water",
+  category: "Drink",
+  image: "https://broncoburgers.com/wp-content/uploads/2021/07/Bottled-Water.png",
+  base: "",
+  protein: "",
+  veggies: "",
+  dressing: "",
+  price: 3
+)
+Item.create(
+  name: "Yerba Mate",
+  category: "Drink",
+  image: "https://images.squarespace-cdn.com/content/v1/59c16a752278e7bd79dd5a12/1569624132573-N1IJDLXBW4PT7UYIJSLN/enlightenmint.png",
+  base: "",
+  protein: "",
+  veggies: "",
+  dressing: "",
+  price: 3
+)
 
 bowls = Item.all.filter{|item| item.category == "Bowl"}
 bowl_names = bowls.map{|bowl| bowl.name}

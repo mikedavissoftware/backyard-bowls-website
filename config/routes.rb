@@ -16,6 +16,5 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   # Custom Routes
-  get '/comments_by_item/:id', to: 'comments#comments_by_item'
 
 end

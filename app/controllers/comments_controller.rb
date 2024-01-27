@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  skip_before_action :authorize, only: [:index, :show, :comments_by_item]
+  skip_before_action :authorize, only: [:index, :show]
 
   def index
     comments = Comment.all
@@ -26,11 +26,6 @@ class CommentsController < ApplicationController
     comment = Comment.find(params[:id])
     comment.destroy!
     head :no_content
-  end
-
-  def comments_by_item
-    comments = Comment.select{|comment| comment.item_id == params[:id].to_i}
-    render json: comments, include: ['user']
   end
 
   private

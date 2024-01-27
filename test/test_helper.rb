@@ -65,7 +65,7 @@ class ActiveSupport::TestCase
       username: username,
       password: password
     }
-    assert_response :success
+    @current_user = JSON.parse(response.body)
   end
 
 end
