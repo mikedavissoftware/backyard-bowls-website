@@ -4,6 +4,6 @@ like1:
   item_id: 1
 
 like2:
-  id: 3
+  id: 2
   user_id: 3
-  item_id: 1
+  item_id: 2
