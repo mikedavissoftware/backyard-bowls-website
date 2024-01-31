@@ -12,20 +12,33 @@ class CommentsController < ApplicationController
   end
 
   def create
-    comment = Comment.create(comment_params)
-    render json: comment, status: :created
+    if session[:user_id] == params[:user_id].to_i
+      comment = Comment.create(comment_params)
+      render json: comment, status: :created
+    else
+      render json: {errors: ["Cannot create comments for other users."]}, status: :unauthorized
+    end
   end
 
   def update
     comment = Comment.find(params[:id])
-    comment.update!(comment_params)
-    render json: comment, status: :ok
+    if session[:user_id] == params[:user_id].to_i
+      comment.update!(comment_params)
+      render json: comment, status: :ok
+    else
+      render json: {errors: ["Cannot update other users' comments."]}, status: :unauthorized
+    end
   end
 
   def destroy
+    p params[:user_id]
     comment = Comment.find(params[:id])
-    comment.destroy!
-    head :no_content
+    if session[:user_id] == params[:user_id].to_i
+      comment.destroy!
+      head :no_content
+    else
+      render json: {errors: ["Cannot delete other users' comments."]}, status: :unauthorized
+    end
   end
 
   private

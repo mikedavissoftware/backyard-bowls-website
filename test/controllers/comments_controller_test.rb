@@ -75,7 +75,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
 
   test "if logged in, DESTROY should delete comment" do
     login()
-    delete comment_path(@comment1)
+    delete comment_path(@comment1), params
     assert_response :success
   end
 

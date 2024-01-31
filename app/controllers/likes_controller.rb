@@ -12,14 +12,22 @@ class LikesController < ApplicationController
   end
 
   def create
-    like = Like.create!(like_params)
-    render json: like, status: :created
+    if session[:user_id] == params[:user_id].to_i
+      like = Like.create!(like_params)
+      render json: like, status: :created
+    else
+      render json: {errors: ["Cannot create likes for other users."]}, status: :unauthorized
+    end
   end
 
   def destroy
     like = Like.find(params[:id])
-    like.destroy
-    head :no_content
+    if session[:user_id] == params[:user_id].to_i
+      like.destroy
+      head :no_content
+    else
+      render json: {errors: ["Cannot delete likes from other users."]}, status: :unauthorized
+    end
   end
 
   private

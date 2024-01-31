@@ -33,10 +33,17 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
   test "CREATE should add a like and return it" do
     login()
     post likes_path, params: {
-      user_id: 3,
-      item_id: 1
+      user_id: 1,
+      item_id: 3
     }
-    p response.body
+  end
+
+  test "CREATE should not be able to add a like with a different user_id" do
+    login()
+    post likes_path, params: {
+      user_id: 3,
+      item_id: 2
+    }
   end
 
 end
