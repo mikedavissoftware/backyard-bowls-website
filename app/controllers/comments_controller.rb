@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
 
   def update
     comment = Comment.find(params[:id])
-    if session[:user_id] == params[:user_id].to_i
+    if session[:user_id] == comment.user_id
       comment.update!(comment_params)
       render json: comment, status: :ok
     else
@@ -31,9 +31,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    p params[:user_id]
     comment = Comment.find(params[:id])
-    if session[:user_id] == params[:user_id].to_i
+    if session[:user_id] == comment.user_id
       comment.destroy!
       head :no_content
     else

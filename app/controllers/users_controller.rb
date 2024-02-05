@@ -18,21 +18,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    if session[:user_id] == params[:user_id].to_i
-      @current_user.update!(user_params)
-      render json: @current_user, status: :accepted
-    else
-      render json: {errors: ["Cannot update other user's information."]}, status: :unauthorized
-    end
+    @current_user.update!(user_params)
+    render json: @current_user, status: :accepted
   end
 
   def destroy
-    if session[:user_id] == params[:user_id].to_i
-      @current_user.destroy
-      head :no_content
-    else
-      render json: {errors: ["Cannot delete other users."]}, status: :unauthorized
-    end
+    @current_user.destroy
+    head :no_content
   end
 
   private

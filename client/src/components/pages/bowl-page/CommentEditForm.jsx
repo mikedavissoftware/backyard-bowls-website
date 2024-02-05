@@ -31,7 +31,7 @@ export default function CommentEditForm({ comment, setShowEditForm, setIsCurrent
     fetch(`/api/comments/${comment.id}`, {
       method: "PATCH",
       headers: {
-          "Content-Type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(formData)
     })
