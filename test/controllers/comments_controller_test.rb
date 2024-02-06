@@ -9,7 +9,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
 
   test "INDEX should respond with all comments, REGARDLESS OF LOGIN" do
     get comments_path
-    assert_response :success, "did not respond with comments"
+    assert_response :success, "did not respond with success code 200"
     object = JSON.parse(response.body)
     assert object.length == 4, "responded with incorrect number of comments"
     assert object[3]["rating"] == 1, "unexpected value for rating on chosen comment"
@@ -17,9 +17,9 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
 
   test "SHOW should respond with one comment, REGARDLESS OF LOGIN" do
     get comments_path(@comment2)
-    assert_response :success
+    assert_response :success, "did not respond with success code 200"
     object = JSON.parse(response.body)
-    assert object[1]["rating"] == 4
+    assert object[1]["rating"] == 4, "unexpected value for rating on comment"
   end
 
   test "CREATE should NOT add a comment IF LOGGED OUT" do
@@ -30,7 +30,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
       user_id: 1,
       item_id: 4
     }
-    assert_response 401
+    assert_response 401, "did not respond with expected unauthorized status"
   end
 
   test "CREATE should add a comment and respond with it IF LOGGED IN" do
@@ -42,9 +42,9 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
       user_id: @current_user["id"],
       item_id: 4
     }
-    assert_response :success
+    assert_response :success, "did not respond with success code 200"
     object = JSON.parse(response.body)
-    assert object["content"] == content
+    assert object["content"] == content, "unexpected value for comment's content"
   end
 
   test "UPDATE should NOT edit comment IF LOGGED OUT" do
@@ -55,7 +55,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
       user_id: 1,
       item_id: 4
     }
-    assert_response 401
+    assert_response 401, "did not respond with expected unauthorized status"
   end
 
   test "UPDATE should edit comment and respond with it IF LOGGED IN" do
@@ -67,29 +67,29 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
       user_id: @current_user["id"],
       item_id: 4
     }
-    assert_response :success
+    assert_response :success, "did not respond with success code 200"
     object = JSON.parse(response.body)
-    assert object["content"] == new_content
-    assert object["rating"] == 9
+    assert object["content"] == new_content, "unexpected value for comment's new content"
+    assert object["rating"] == 9, "unexpected value for comment's new rating"
   end
 
   test "DESTROY should NOT delete any comment IF LOGGED OUT" do
     delete comment_path(@comment1)
-    assert_response 401
+    assert_response 401, "did not respond with expected unauthorized status"
     delete comment_path(@comment2)
-    assert_response 401
+    assert_response 401, "did not respond with expected unauthorized status"
   end
 
   test "DESTROY should delete own user comment IF LOGGED IN" do
     login()
     delete comment_path(@comment1)
-    assert_response :success
+    assert_response :success, "did not respond with success code 200"
   end
 
   test "DESTROY should NOT delete other user comment, even IF LOGGED IN" do
     login()
     delete comment_path(@comment2)
-    assert_response 401
+    assert_response 401, "did not respond with expected unauthorized status"
   end
 
 end
