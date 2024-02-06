@@ -7,15 +7,15 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     @comment2 = comments(:comment2)
   end
 
-  test "INDEX should return all comments, regardless of login" do
+  test "INDEX should respond with all comments, REGARDLESS OF LOGIN" do
     get comments_path
-    assert_response :success
+    assert_response :success, "did not respond with comments"
     object = JSON.parse(response.body)
-    assert object.length == 4
-    assert object[3]["rating"] == 1
+    assert object.length == 4, "responded with incorrect number of comments"
+    assert object[3]["rating"] == 1, "unexpected value for rating on chosen comment"
   end
 
-  test "SHOW should return one comment, regardless of login" do
+  test "SHOW should respond with one comment, REGARDLESS OF LOGIN" do
     get comments_path(@comment2)
     assert_response :success
     object = JSON.parse(response.body)
@@ -33,7 +33,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_response 401
   end
 
-  test "CREATE should add a comment and return it IF LOGGED IN" do
+  test "CREATE should add a comment and respond with it IF LOGGED IN" do
     content = "This is a test comment"
     login()
     post comments_path, params: {
@@ -58,7 +58,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_response 401
   end
 
-  test "UPDATE should edit comment and return it IF LOGGED IN" do
+  test "UPDATE should edit comment and respond with it IF LOGGED IN" do
     new_content = "This is a NEW test comment"
     login()
     patch comment_path(@comment1), params: {
