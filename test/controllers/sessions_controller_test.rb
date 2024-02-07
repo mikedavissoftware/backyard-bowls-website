@@ -8,10 +8,11 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     login(@username, @password)
   end
 
-  test "should show current session's user info" do
+  test "SHOW should return current session's user info" do
     get "/me"
+    assert_response :success, "did not respond with success code 200"
     object = JSON.parse(response.body)
-    assert object['username'] == @username, "username must equal login username"
+    assert object['username'] == @username, "unexpected value for login username"
   end
 
 
