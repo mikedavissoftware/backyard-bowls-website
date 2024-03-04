@@ -1,5 +1,7 @@
 # Backyard Bowls Food Truck Website
 
+!["Screenshot of this site"](public/gif/mds-software-COMP.gif)
+
 As the capstone project for my full stack boot camp at Flatiron School, I wanted to work with an external client. Luckily, my good friend had a food truck called Backyard Bowls. So, I asked him if I could build a mock website around the food truck menu and branding. He was enthusiastic about the idea, so I got started on it.
 
 With this capstone project, there were a few major requirements:
