@@ -98,40 +98,40 @@ Item.create(
   name: "Boulder Chips",
   category: "Side",
   image: "https://assets-global.website-files.com/622a65eb1d2ac4806c863e1c/6271acfb7412c31d3a294b0e_12058_Boulder_Canyon_5.25oz_Classic_Sea_Salt_Avacado_Oil_CC_Kettle_Chip_Bag_Front.webp",
-  base: "",
-  protein: "",
-  veggies: "",
-  dressing: "",
+  base: "NA",
+  protein: "NA",
+  veggies: "NA",
+  dressing: "NA",
   price: 2
 )
 Item.create(
   name: "Kombucha",
   category: "Drink",
   image: "https://cdn.shopify.com/s/files/1/0281/6383/3891/products/Kombucha-Water---New-Bottle_400x.png?v=1675707059",
-  base: "",
-  protein: "",
-  veggies: "",
-  dressing: "",
+  base: "NA",
+  protein: "NA",
+  veggies: "NA",
+  dressing: "NA",
   price: 5
 )
 Item.create(
   name: "Water",
   category: "Drink",
   image: "https://broncoburgers.com/wp-content/uploads/2021/07/Bottled-Water.png",
-  base: "",
-  protein: "",
-  veggies: "",
-  dressing: "",
+  base: "NA",
+  protein: "NA",
+  veggies: "NA",
+  dressing: "NA",
   price: 3
 )
 Item.create(
   name: "Yerba Mate",
   category: "Drink",
   image: "https://images.squarespace-cdn.com/content/v1/59c16a752278e7bd79dd5a12/1569624132573-N1IJDLXBW4PT7UYIJSLN/enlightenmint.png",
-  base: "",
-  protein: "",
-  veggies: "",
-  dressing: "",
+  base: "NA",
+  protein: "NA",
+  veggies: "NA",
+  dressing: "NA",
   price: 3
 )
 
