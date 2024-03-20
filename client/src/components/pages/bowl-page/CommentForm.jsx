@@ -7,7 +7,7 @@ import { GlobalContext } from "../../../App"
 
 export default function CommentForm({ itemId, isCurrentUserComment, setIsCurrentUserComment }) {
 
-  const { currentUser } = useContext(GlobalContext)
+  const { currentUser, setErrors, showErrors } = useContext(GlobalContext)
 
   const [showCommentForm, setShowCommentForm] = useState(false)
 
@@ -40,7 +40,7 @@ export default function CommentForm({ itemId, isCurrentUserComment, setIsCurrent
   }
 
   function submitComment(e) {
-    // e.preventDefault()
+    e.preventDefault()
 
     fetch(`/api/comments`, {
       method: "POST",
@@ -49,13 +49,21 @@ export default function CommentForm({ itemId, isCurrentUserComment, setIsCurrent
       },
       body: JSON.stringify(formData)
     })
-    .then(r => r.json())
-    .then(newComment => {
-      console.log(newComment)
+    .then(r => {
+      if (r.ok) {
+        r.json().then(newComment => {
+          console.log(newComment)
+        })
+        setIsCurrentUserComment(true)
+        setFormData(newForm)
+        toggleCommentForm()
+      } else {
+        r.json().then((err) => {
+          setErrors(err.errors)
+          console.log(err.errors)
+        });
+      }
     })
-    setIsCurrentUserComment(true)
-    setFormData(newForm)
-    toggleCommentForm()
   }
 
   if (isCurrentUserComment) return null
@@ -68,6 +76,9 @@ export default function CommentForm({ itemId, isCurrentUserComment, setIsCurrent
       ) : (
         <>
         <button className="btn btn-primary" onClick={() => toggleCommentForm()}>Hide Comment Form</button>
+        <br/>
+        {showErrors}
+
         <form className="mb-8" onSubmit={submitComment}>
           <div className="form-control max-w-2xl mx-auto">
             <label className="label">

@@ -5,7 +5,7 @@ import { GlobalContext } from "../../../App"
 
 export default function LoginForm({ formData, handleChange }) {
 
-  const { setCurrentUser, history, errors, setErrors } = useContext(GlobalContext)
+  const { setCurrentUser, history, errors, setErrors, showErrors } = useContext(GlobalContext)
 
   const redirect = () => {
     history.push('/menu');
@@ -33,20 +33,12 @@ export default function LoginForm({ formData, handleChange }) {
     });
   }
 
-  const errorComponents = (errors) ? (
-    errors.map((error) => {
-      return <h4 style={{color: "#dd0000"}}>{error}</h4>
-    })
-  ) : (
-    null
-  )
-
   return (
     <div>
       <h2 className="font-bold text-white text-2xl">Log In</h2>
 
       <div className="mt-2">
-        {errorComponents}
+        {showErrors}
       </div>
 
       <form onSubmit={handleSubmit}>

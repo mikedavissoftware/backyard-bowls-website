@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
 
   def create
     if session[:user_id] == params[:user_id].to_i
-      comment = Comment.create(comment_params)
+      comment = Comment.create!(comment_params)
       render json: comment, status: :created
     else
       render json: {errors: ["Cannot create comments for other users."]}, status: :unauthorized

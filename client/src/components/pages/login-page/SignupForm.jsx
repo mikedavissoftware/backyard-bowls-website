@@ -5,7 +5,7 @@ import { GlobalContext } from "../../../App"
 
 export default function SignupForm({ items, diets, formData, handleChange }) {
 
-  const { currentUser, setCurrentUser, history, errors, setErrors } = useContext(GlobalContext)
+  const { currentUser, setCurrentUser, history, errors, setErrors, showErrors } = useContext(GlobalContext)
 
   const redirect = () => {
     history.push('/me');
@@ -57,14 +57,6 @@ export default function SignupForm({ items, diets, formData, handleChange }) {
     });
     console.log(currentUser)
   }
-
-  const showErrors = (errors) ? (
-    errors.map((error) => {
-      return <h4 style={{color: "#dd0000"}}>{error}</h4>
-    })
-  ) : (
-    null
-  )
 
   if (!items) return <h2>Loading...</h2>
 

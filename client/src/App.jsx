@@ -19,6 +19,14 @@ export default function App() {
   const history = useHistory()
   
   const [errors, setErrors] = useState([])
+
+  const showErrors = (errors) ? (
+    errors.map((error) => {
+      return <h4 style={{color: "#dd0000", marginTop: "10px", marginBottom: "10px"}}>{error}</h4>
+    })
+  ) : (
+    null
+  )
   
   const [currentUser, setCurrentUser] = useState(null)
   useEffect(() => {
@@ -34,7 +42,7 @@ export default function App() {
 
   return (
     <div className="App">
-    <GlobalContext.Provider value={{ currentUser, setCurrentUser, history, errors, setErrors }}>
+    <GlobalContext.Provider value={{ currentUser, setCurrentUser, history, errors, setErrors, showErrors }}>
 
       {currentUser ? (
         <FloatingAvatar currentUser={currentUser} />

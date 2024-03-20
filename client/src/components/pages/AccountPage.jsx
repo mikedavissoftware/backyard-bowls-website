@@ -5,7 +5,7 @@ import { GlobalContext } from "../../App"
 
 export default function AccountPage() {
 
-  const { currentUser, setCurrentUser, history, errors, setErrors } = useContext(GlobalContext)
+  const { currentUser, setCurrentUser, history, errors, setErrors, showErrors } = useContext(GlobalContext)
 
   // console.log(currentUser)
 
@@ -121,14 +121,6 @@ export default function AccountPage() {
     redirect()
   }
 
-  const errorComponents = (errors) ? (
-    errors.map((error) => {
-      return <h4 style={{color: "#dd0000"}}>{error}</h4>
-    })
-  ) : (
-    null
-  )
-
   if (!currentUser) return <span className="loading loading-bars loading-lg" style={{margin: "10rem"}}></span>
 
   return (
@@ -136,9 +128,7 @@ export default function AccountPage() {
       
       <h1 className="mb-6 text-3xl font-bold">Your Account</h1>
 
-      <div>
-        {errorComponents}
-      </div>
+      {showErrors}
 
       <div className="avatar">
         <div className="w-96 mask mask-squircle">
