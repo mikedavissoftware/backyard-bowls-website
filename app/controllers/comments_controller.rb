@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  skip_before_action :authorize, only: [:index, :show]
+  skip_before_action :authorize, only: [:index, :show, :comments_by_item]
 
   def index
     comments = Comment.all
@@ -9,6 +9,11 @@ class CommentsController < ApplicationController
   def show
     comment = Comment.find(params[:id])
     render json: comment
+  end
+
+  def comments_by_item
+    comments = Comment.select{|comment| comment.item_id == params[:id].to_i}
+    render json: comments, include: ['user']
   end
 
   def create

@@ -17,4 +17,6 @@ Rails.application.routes.draw do
 
   # Custom Routes
 
+  get '/comments_by_item/:id', to: 'comments#comments_by_item'
+
 end
