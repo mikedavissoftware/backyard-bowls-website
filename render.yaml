@@ -1,0 +1,19 @@
+databases:
+  - name: daggett_control
+    databaseName: daggett_control
+    user: daggett_control
+
+services:
+  - type: web
+    name: daggett_control
+    env: ruby
+    repo: https://github.com/mikedavissoftware/daggett-control-website
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: daggett_control
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
